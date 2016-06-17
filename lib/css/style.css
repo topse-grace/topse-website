@@ -219,6 +219,7 @@ header{
 .container ul li {
     line-height: 1.7;
     margin-bottom: .6em;
+    margin-left: 2.0em;
     list-style-position: inside
 }
 
