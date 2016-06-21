@@ -37,9 +37,9 @@ class PageFragments extends DB_UseSharedObjects
             curl_setopt($handle, CURLOPT_HEADER, 0);
             curl_setopt($handle, CURLOPT_RETURNTRANSFER, 1);
             if ($lang === 'ja') {
-                curl_setopt($handle, CURLOPT_URL, 'http://stage.topse.jp/ja/news.html');
+                curl_setopt($handle, CURLOPT_URL, 'http://www.topse.jp/ja/news.html');
             } else {
-                curl_setopt($handle, CURLOPT_URL, 'http://stage.topse.jp/en/news.html');
+                curl_setopt($handle, CURLOPT_URL, 'http://www.topse.jp/en/news.html');
             }
             $response = curl_exec($handle);
             $response = str_replace('<!DOCTYPE html>', '', $response);
