@@ -47,10 +47,13 @@ ul,ol{
     padding-left: 1em;
 }
 
-#Abstract .container{
+#Abstract{
     background-color:#E9FFCB;
 }
 
+#TopTitle{
+    text-shadow: 0px 2px 1px #4C4C4F;
+}
 /*
  * Off Canvas
  * --------------------------------------------------
@@ -157,10 +160,6 @@ p {
     line-height: 1.7
 }
 
-header{
-    text-shadow: 0px 2px 1px #4C4C4F;
-}
-
 /* Classes
 --------------------------------------------------------- */
 .clearfix:after {
@@ -221,6 +220,26 @@ header{
     margin-bottom: .6em;
     margin-left: 2.0em;
     list-style-position: inside
+}
+
+/* Nav bar
+--------------------------------------------------------- */
+
+.navbar-original{
+    border:none;
+    background-color: #ffffff;
+    padding: 0;
+}
+.navbar-original .navbar-brand,
+.navbar-original .navbar-nav > li > a{
+    color:#3E3F3A;
+}
+.navbar-original .navbar-brand:hover,
+.navbar-original .navbar-nav > li > a:hover{
+    color:#81B33A;
+}
+.navbar-original ul li{
+    margin-bottom: 0;
 }
 
 /* Footer
