@@ -56,18 +56,10 @@ ul,ol{
 
 }
 
-.parallax-window {
-    min-height: 400px;
-    background: transparent;
+#Effectiveness img{
+    padding: 10px;
 }
 
-.circle {
-   width: 35%;
-   height: 150px;
-   background: black;
-   border-radius: 50px;
-   margin: 20px;
-}
 /*
  * Off Canvas
  * --------------------------------------------------
@@ -249,7 +241,7 @@ p {
 .toppage{
     margin: 0;
     border-radius: 0;
-    background-color: white;
+    background-color: #f2f2f2;
 }
 .toppage .container{
     background-color: transparent;
@@ -287,6 +279,34 @@ p {
     background-color: #81B33A;
 }
 
+/* Parallax 
+--------------------------------------------------------- */
+.parallax1{
+    background-image: url('../../images/parallax1.jpg');
+    height: 500px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.parallax2{
+    background-image: url('../../images/parallax2.jpg');
+    height: 500px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.parallax3{
+    background-image: url('../../images/footer_sky.png');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 /* Footer
 --------------------------------------------------------- */
 /*footer {
@@ -302,9 +322,7 @@ footer .container {
 
 footer{
     margin-top: 0px;
-    background-image: url('../../images/footer_sky.png');
-    background-size: cover;
-    background-color: #036BB2;
+    background-color: #0b1e34;
     color: #d6e7e8;
     /*background-color:#e8e7e7;" DEFAULT COLOR*/
 }
