@@ -8,13 +8,10 @@ body {
     overflow-x: hidden; /* Prevent scroll on narrow devices */
     background: url('../../images/top2_fixed_blur.jpg') center center /cover no-repeat fixed;
 }
-
 body.toplevepage    {
     padding-top: 60px;
 }
-body {
-    /*padding-top: 110px;*/
-}
+
 footer {
     /*padding: 30px 0;*/
 }
@@ -32,6 +29,9 @@ footer{
     font-size: 80%;
 }
 
+
+
+
 .container{
     border-radius: 7px;
 }
@@ -48,14 +48,18 @@ ul,ol{
 #Abstract{
     background-color:#E9FFCB;
 }
-#Abstract .container{
-    background-color: transparent;
-}
 
 #TopTitle{
     text-shadow: 0px 2px 1px #4C4C4F;
     background-color: transparent;
+    background: url('../../images/top2_fixed_blur.jpg') center center /cover no-repeat fixed;
+
 }
+
+#Effectiveness img{
+    padding: 10px;
+}
+
 /*
  * Off Canvas
  * --------------------------------------------------
@@ -112,7 +116,7 @@ body {
     min-width: 768px
 }
 section {
-    margin: 40px 0 80px 
+    margin: 80px 0 0 0 
 }
 section .container{
     background-color:#fff;
@@ -234,6 +238,15 @@ p {
     list-style-position: inside
 }
 
+.toppage{
+    margin: 0;
+    border-radius: 0;
+    background-color: #f2f2f2;
+}
+.toppage .container{
+    background-color: transparent;
+    padding:80px 0;
+}
 /* Nav bar
 --------------------------------------------------------- */
 
@@ -266,6 +279,34 @@ p {
     background-color: #81B33A;
 }
 
+/* Parallax 
+--------------------------------------------------------- */
+.parallax1{
+    background-image: url('../../images/parallax1.jpg');
+    height: 500px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.parallax2{
+    background-image: url('../../images/parallax2.jpg');
+    height: 500px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.parallax3{
+    background-image: url('../../images/footer_sky.png');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 /* Footer
 --------------------------------------------------------- */
 /*footer {
@@ -280,7 +321,10 @@ footer .container {
 */
 
 footer{
-    margin-top: 100px;
+    margin-top: 0px;
+    background-color: #0b1e34;
+    color: #d6e7e8;
+    /*background-color:#e8e7e7;" DEFAULT COLOR*/
 }
 
 footer .signature {
@@ -290,6 +334,11 @@ footer .signature {
     padding: 0;
     margin: 0;
     width: 100%;
+}
+
+.earth{
+    background-color: #036BB2;
+    color: #d6e7e8;
 }
 
 #IM_CREDIT	{
@@ -481,4 +530,27 @@ video {
         -moz-box-sizing: content-box;
         box-sizing: content-box;
     }
+}
+
+
+body {
+    /*padding-top: 110px;*/
+    position: relative;
+}
+
+.imageHolder{
+    position: relative;
+    z-index: -333;
+}
+
+.after_blur1{ 
+    top: -300;
+    margin-bottom: -600;
+    position: relative;
+}
+
+.after_blur2{ 
+    top: -900;
+    margin-bottom: -900;
+    position: relative;
 }
