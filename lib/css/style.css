@@ -12,10 +12,6 @@ body.toplevepage    {
     padding-top: 60px;
 }
 
-footer {
-    /*padding: 30px 0;*/
-}
-
 header a{
     color:#fff;
 }
@@ -339,6 +335,7 @@ footer .signature {
 .earth{
     background-color: #036BB2;
     color: #d6e7e8;
+    padding: 80px 0;
 }
 
 #IM_CREDIT	{
