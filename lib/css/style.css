@@ -246,7 +246,11 @@ p {
 /* Nav bar
 --------------------------------------------------------- */
 
+.navbar{
+    margin-bottom: 0;
+}
 .navbar-original{
+    margin-top: 40px;
     border:none;
     background-color: #ffffff;
     padding: 0;
