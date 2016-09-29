@@ -3,56 +3,55 @@
  * --------------------------------------------------
  */
 @import url("https://fonts.googleapis.com/css?family=Lato:400,700,400italic");
+
 html,
 body {
     overflow-x: hidden; /* Prevent scroll on narrow devices */
     background: url('../../images/top2_fixed_blur.jpg') center center /cover no-repeat fixed;
 }
-body.toplevepage    {
+
+body.toplevepage {
     padding-top: 60px;
 }
 
-header a{
-    color:#fff;
+header a {
+    color: #fff;
 }
 
-header nav{
+header nav {
     position: fixed;
     z-index: 999;
 }
 
-footer{
+footer {
     font-size: 80%;
 }
 
-
-
-
-.container{
+.container {
     border-radius: 7px;
 }
 
-h2:first-letter{
+h2:first-letter {
     font-weight: bold;
     font-size: 105%;
 }
 
-ul,ol{
+ul, ol {
     padding-left: 1em;
 }
 
-#Abstract{
-    background-color:#E9FFCB;
+#Abstract {
+    background-color: #E9FFCB;
 }
 
-#TopTitle{
+#TopTitle {
     text-shadow: 0px 2px 1px #4C4C4F;
     background-color: transparent;
     background: url('../../images/top2_fixed_blur.jpg') center center /cover no-repeat fixed;
 
 }
 
-#Effectiveness img{
+#Effectiveness img {
     padding: 10px;
 }
 
@@ -104,38 +103,45 @@ ul,ol{
 /* Elements
 --------------------------------------------------------- */
 html, body {
-    font-family:"Lato", "Helvetica Neue", Helvetica,"游ゴシック体", "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+    font-family: "Lato", "Helvetica Neue", Helvetica, "游ゴシック体", "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
     font-size: 16px;
     line-height: 1.7
 }
+
 body {
     min-width: 768px
 }
+
 section {
-    margin: 80px 0 0 0 
+    margin: 80px 0 0 0
 }
-section .container{
-    background-color:#fff;
-    padding:0.5em 2em;
+
+section .container {
+    background-color: #fff;
+    padding: 0.5em 2em;
 }
+
 ul {
     margin: 0;
     padding: 0
 }
+
 a:focus, *:focus {
     outline: 0
 }
+
 a {
     color: #337ab7;
     text-decoration: none
 }
+
 h1 {
     font-size: 3em;
     line-height: 1.3;
     letter-spacing: -2px;
 }
 
-header h2{
+header h2 {
     font-size: 1.7em;
 }
 
@@ -150,22 +156,26 @@ h2 {
     font-size: 1.5em;
     line-height: 1.3
 }
+
 h3 {
     margin: .83em 0;
     font-size: 1.4em;
     line-height: 1.3
 }
+
 h4 {
     margin: .83em 0;
     font-size: 1.2em;
     line-height: 1.3
 }
-h5:before{
+
+h5:before {
     content: "Q. ";
-    color:#81B33A;
+    color: #81B33A;
     font-weight: bold;
     font-size: 1.2em;
 }
+
 p {
     margin: 1em 0;
     font-size: 1em;
@@ -181,39 +191,48 @@ p {
     height: 0;
     visibility: hidden
 }
+
 .clearfix {
     min-height: 1px
 }
+
 * html .clearfix {
     height: 1px
 }
+
 .hidden {
     display: none
 }
+
 .clear {
     clear: both
 }
+
 .red {
     color: #d33
 }
+
 .frame {
     margin: 0 10px 10px;
     padding: 3px;
     border: 1px solid #ccc
 }
+
 .right-box {
     margin: 0 0 20px 40px;
     float: right
 }
+
 .left-box {
     margin: 0 40px 20px 0;
     float: left
 }
+
 .article-date {
     text-align: right
 }
 
-.submenu    {
+.submenu {
     margin: 50px 0 0 0;
     background-color: #555555;
 }
@@ -224,9 +243,11 @@ p {
     padding: 9px;
     margin: auto;
 }
+
 .container ul li {
     line-height: 1.6em
 }
+
 .container ul li {
     line-height: 1.7;
     margin-bottom: .6em;
@@ -234,54 +255,60 @@ p {
     list-style-position: inside
 }
 
-.toppage{
+.toppage {
     margin: 0;
     border-radius: 0;
     background-color: #f2f2f2;
 }
-.toppage .container{
+
+.toppage .container {
     background-color: transparent;
-    padding:80px 0;
+    padding: 80px 0;
 }
+
 /* Nav bar
 --------------------------------------------------------- */
 
-.navbar{
+.navbar {
     margin-bottom: 0;
 }
-.navbar-original{
+
+.navbar-original {
     margin-top: 40px;
-    border:none;
+    border: none;
     background-color: #ffffff;
     padding: 0;
 }
-.navbar-original .navbar-brand{
+
+.navbar-original .navbar-brand {
     font-weight: bold;
 }
 
 .navbar-original .navbar-brand,
-.navbar-original .navbar-nav > li > a{
-    color:#3E3F3A;
+.navbar-original .navbar-nav > li > a {
+    color: #3E3F3A;
 }
+
 .navbar-original .navbar-brand:hover,
-.navbar-original .navbar-nav > li > a:hover{
-    color:#81B33A;
+.navbar-original .navbar-nav > li > a:hover {
+    color: #81B33A;
 }
-.navbar-original ul li{
+
+.navbar-original ul li {
     margin-bottom: 0;
 }
 
-.nabvar .nav > li > a{
+.nabvar .nav > li > a {
     font-size: 16px;
 }
 
-.navbar-toggle .icon-bar{
+.navbar-toggle .icon-bar {
     background-color: #81B33A;
 }
 
 /* Parallax 
 --------------------------------------------------------- */
-.parallax1{
+.parallax1 {
     background-image: url('../../images/parallax1.jpg');
     height: 500px;
     background-attachment: fixed;
@@ -290,7 +317,7 @@ p {
     background-size: cover;
 }
 
-.parallax2{
+.parallax2 {
     background-image: url('../../images/parallax2.jpg');
     height: 500px;
     background-attachment: fixed;
@@ -299,7 +326,7 @@ p {
     background-size: cover;
 }
 
-.parallax3{
+.parallax3 {
     background-image: url('../../images/footer_sky.png');
     background-attachment: fixed;
     background-position: center;
@@ -320,7 +347,7 @@ footer .container {
 }
 */
 
-footer{
+footer {
     margin-top: 0px;
     background-color: #0b1e34;
     color: #d6e7e8;
@@ -336,14 +363,14 @@ footer .signature {
     width: 100%;
 }
 
-.earth{
+.earth {
     background-color: #036BB2;
     color: #d6e7e8;
     padding: 80px 0;
 }
 
-#IM_CREDIT	{
-	display: none;
+#IM_CREDIT {
+    display: none;
 }
 
 /* Infobox
@@ -351,6 +378,7 @@ footer .signature {
 .infobox {
     padding: 20px
 }
+
 .infobox.gray {
     background-color: #e0e3e5
 }
@@ -367,9 +395,11 @@ table {
     vertical-align: middle;
     font-size: .9em
 }
+
 table tr {
     height: 47px
 }
+
 table th {
     background-color: #f5f5f5;
     padding: 5px;
@@ -377,6 +407,7 @@ table th {
     border-width: 0 0 1px 1px;
     height: 47px
 }
+
 table td {
     padding: 5px;
     border: 1px solid #d3d3d3;
@@ -393,8 +424,8 @@ video {
 --------------------------------------------------------- */
 
 @media only screen and (min-width: 767px) {
-    #Abstract{
-        padding:70px 0;
+    #Abstract {
+        padding: 70px 0;
     }
 }
 
@@ -402,83 +433,102 @@ video {
     html, body {
         font-size: 18px;
     }
+
     body {
         min-width: 100%;
     }
+
     section {
         margin: 10px;
     }
+
     section h1 {
         margin: .83em 0;
         font-size: 3em;
         line-height: 1.3
     }
-    h2{
+
+    h2 {
         margin: .83em 0;
         font-size: 1.18em;
         line-height: 1.3
     }
+
     .hero-unit .container {
         padding: 15px;
         margin: auto;
     }
+
     .summary {
         line-height: 1.6em
     }
+
     .local-nav {
         overflow: scroll;
     }
+
     .local-nav li {
         display: inline-table;
     }
+
     .local-nav li a {
         margin: 7px 1px 6px;
     }
+
     .hero-unit .left-box {
         display: none;
     }
+
     .container {
         padding: 10px;
     }
+
     .infobox {
         line-height: 1.3
     }
+
     .left-box,
     .right-box {
         margin: 20px auto;
     }
+
     .goto-top {
         bottom: 10px;
         right: 10px;
     }
-    .line-min{
+
+    .line-min {
         border: 0;
         border-top: 1px solid #c5c5c5;
         -webkit-box-sizing: content-box;
         -moz-box-sizing: content-box;
         box-sizing: content-box;
     }
-    .row{
-        margin-top:40px;
+
+    .row {
+        margin-top: 40px;
     }
 }
+
 @media only screen and (max-width: 767px) and (min-width: 414px) {
     .local-nav {
         max-width: 767px;
         min-width: 414px;
         padding: 0;
     }
+
     h1 {
         margin: .83em 0;
         font-size: 2.55em;
         line-height: 1.3;
         letter-spacing: -1px;
     }
-    #ProfHoniden img{
+
+    #ProfHoniden img {
         width: 50%;
     }
 
-    .line-min{
+    .line-min {
         border: 0;
         border-top: 1px solid #c5c5c5;
         -webkit-box-sizing: content-box;
@@ -486,22 +536,26 @@ video {
         box-sizing: content-box;
     }
 }
+
 @media only screen and (max-width: 413px) and (min-width: 375px) {
     .local-nav {
         max-width: 413px;
         min-width: 375px;
         padding: 0;
     }
+
     h1 {
         margin: .83em 0;
         font-size: 1.38em;
         line-height: 1.3;
         letter-spacing: -1px;
     }
-    #ProfHoniden img{
+
+    #ProfHoniden img {
         width: 50%;
     }
-    .line-min{
+
+    .line-min {
         border: 0;
         border-top: 1px solid #c5c5c5;
         -webkit-box-sizing: content-box;
@@ -509,22 +563,26 @@ video {
         box-sizing: content-box;
     }
 }
+
 @media only screen and (max-width: 374px) {
     .local-nav {
         max-width: 374px;
         min-width: 320px;
         padding: 0;
     }
+
     h1 {
         margin: .83em 0;
         font-size: 1.18em;
         line-height: 1.3;
         letter-spacing: -1px;
     }
-    #ProfHoniden img{
+
+    #ProfHoniden img {
         width: 50%;
     }
-    .line-min{
+
+    .line-min {
         border: 0;
         border-top: 1px solid #c5c5c5;
         -webkit-box-sizing: content-box;
@@ -533,25 +591,95 @@ video {
     }
 }
 
-
 body {
     /*padding-top: 110px;*/
     position: relative;
 }
 
-.imageHolder{
+.imageHolder {
     position: relative;
     z-index: -333;
 }
 
-.after_blur1{ 
+.after_blur1 {
     top: -300;
     margin-bottom: -600;
     position: relative;
 }
 
-.after_blur2{ 
+.after_blur2 {
     top: -900;
     margin-bottom: -900;
     position: relative;
+}
+
+div.centerbox    {
+    position: absolute;
+    border: solid 2px #666666;
+    padding: 20px;
+    background-color: white;
+    color: black;
+    border-radius: 20px;
+    z-index: 1999;
+    opacity: 0;
+    animation: dispbox 0.5s ease 0.5s 1 forwards;
+}
+
+@keyframes dispbox {
+    0% {opacity: 0;}
+    100% {opacity: 1.0;}
+}
+
+
+div.centerbox div.closebox    {
+    float: right;
+    width: 24px;
+    background-color: #777777;
+    color: white;
+    border-radius: 15px;
+    text-align: center;
+    cursor: pointer;
+}
+
+div.centerbox div.title {
+    text-align: center;
+    font-size: 28px;
+}
+
+div.centerbox div.subtitle {
+    text-align: center;
+    font-size: 16px;
+}
+
+div.centerbox div.caption {
+    text-align: center;
+    font-size: 12px;
+    margin: 12px 0 8px 0;
+    font-weight: bold;
+}
+
+div.centerbox span.eyecatch {
+    margin: 0 0 0 10px;
+    color: red;
+    font-size: 18px;
+}
+
+div.centerbox table {
+    text-align: center;
+    margin: 0 auto 0 auto;
+}
+
+div.centerbox th {
+    text-align: left;
+    background-color: #444444;
+    color: white
+}
+
+div.centerbox td {
+    text-align: left;
+    background-color: #EEEEEE;
+}
+
+div.centerbox ul {
+    margin-left: 20px;
 }
