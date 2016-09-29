@@ -26,13 +26,15 @@
             display: none;
         }
     </style>
+    <script>
+    </script>
 </head>
 <body style="padding-top:0px;">
 <section class="row">
     <div class="container" id="TopTitle">
 
         <div class="text-center" style="margin:140px 0;color:#fff">
-            <h1><span class="text-warning">TOP</span> <span class="text-success">S</span>oftware <span class="text-info">E</span>nginner</h1>
+            <h1><span class="text-warning">TOP</span> <span class="text-success">S</span>oftware <span class="text-info">E</span>ngineers</h1>
             <h2><span class="text-info">サイエンス</span>による<span class="text-success">知的</span><span class="text-warning">ものづくり</span>プログラム</h2>
             <!-- img src="../images/top_sample.jpg" width="100%" -->
         </div>
@@ -77,7 +79,9 @@
         </div><!--/.col-md-6.col-lg-4-->
     </div>
 </section>
-<div class="parallax-window" data-parallax="scroll" data-image-src="../images/summary.jpg"></div>
+
+<div class="parallax1"></div>
+
 <section class="row toppage" id="Message">
     <div class="container">
         <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
@@ -91,27 +95,23 @@
     </div>
 </section>
 
+<div class="parallax2"></div>
+
 <section class="row toppage">
     <div class="container" id="Effectiveness">
         <div class="col-md-12 col-lg-12">
             <h2 class="text-center"><span class="text-success">修</span>了生から見たトップエスイーの受講効果</h2>
-
-            <div class="col-md-4 col-lg-4 circle">
-            モデリング，分析能力の向上</div>
-            <div class="col-md-4 col-lg-4 circle">
-            システムに対する理解の向上，視点の変化</div>
-            <div class="col-md-4 col-lg-4 circle">
-            他受講生との交流による知見の向上および人脈の形成</div>
-            <div style="width: 120px; height: 120px;text-align:center; vertical-align: middle; float: right"><img
-                    src="../images/gardening.svg" alt="" height="100%"
-                    onerror="this.onerror=null; this.src='../images/gardening.png'"></div>
-            <p>2006年より毎年修了生を送り出ています．修了生が感じた受講の効果として，次のようなことを挙 げていただきました．</p>
-            <ol id="IM9-39">
-                <li>モデリング，分析能力の向上</li>
-                <li>システムに対する理解の向上，視点の変化</li>
-                <li>他受講生との交流による知見の向上および人脈の形成</li>
-            </ol>
+            <p class="text-center">2006年より毎年修了生を送り出ています．修了生が感じた受講の効果として，次のようなことを挙 げていただきました．</p>
         </div><!--/.col-md-6.col-lg-4-->
+        <div class="col-xs-12 col-sm4 col-md-4 col-lg-4 text-center">
+            <img src="../images/effectiveness1.png" alt="モデリング，分析能力の向上"><br/>
+        モデリング，分析能力の向上</div>
+        <div class="col-xs-12 col-sm4 col-md-4 col-lg-4 text-center">
+            <img src="../images/effectiveness2.png" alt="システムに対する理解の向上，視点の変化"><br/>
+        システムに対する理解の向上，<br/>視点の変化</div>
+        <div class="col-xs-12 col-sm4 col-md-4 col-lg-4 text-center">
+            <img src="../images/effectiveness3.png" alt="他受講生との交流による知見の向上および人脈の形成"><br/>
+        他受講生との交流による知見の向上<br/>および人脈の形成</div>
     </div>
 </section>
 
@@ -120,18 +120,18 @@
         <div class="col-md-12 col-lg-12 line-min">
             <h2 class="text-center"><span class="text-info">受</span>講生のコメント</h2>
             <div style="width: 200px; height: 200px;text-align:center; vertical-align: middle; float: left"><img
-                    src="../images/students/MrKimura.jpg" alt="" height="100%" style="border-radius: 50%;"></div>
-            <p>とてもエキサイティングな1年間でした．演習に多くの時間が充てられているため，
+                    src="../images/students/kimura.jpg" alt="" height="100%" style="border-radius: 50%;" id="studentImg"></div>
+            <p id="studentComment">とてもエキサイティングな1年間でした．演習に多くの時間が充てられているため，
                 技術や理論の本質を深く理解することができたと実感しております．
                 トップエスイーは実践の場としてとても有益だと思います．
             </p>
-            <p align="right">富士通研究所　木村さん</p>   
+            <p align="right"><span id="studentOrganization">富士通研究所</span>　<span id="studentName">富士通研究所</span>さん</p>   
         </div><!--/.col-md-6.col-lg-4-->
     </div>
 </section>
-<section class="row toppage earth">
-    <div class="container" id="Future">
-        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+<section class="row toppage earth parallax3">
+    <div class="container">
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
             <h2><span class="text-info">ト</span>ップエスイーからさらなる飛躍へ</h2>
             <p>講義や修了制作に加えて，トップエスイーでは海外の大学との連携プロジェクトや博士課程進学など，様々な活動にもご参加いただけます．</p>
             <ol id="IM10-43">
@@ -140,9 +140,10 @@
                 <li>修了生として勉強会や様々な交流行事への参加</li>
             </ol>
         </div><!--/.col-md-6.col-lg-4-->
-        
-        <img src="../images/earth.png" alt="earth">
 
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center">
+            <img src="../images/earth.png" alt="earth">
+        <div>
         <!--div class="col-md-4 col-lg-4">
             <div style="width: 120px; height: 120px;text-align:center; vertical-align: middle; float: right"><img
                     src="../images/earth-globe.svg" alt="" height="100%"
@@ -150,7 +151,7 @@
         </div></.col-md-6.col-lg-4-->
     </div>
 </section>
-
-<script src="../lib/js/parallax.min.js"></script>
+<div class="parallax3"></div>
+<script src="../lib/js/students.js"></script>
 </body>
 </html>
