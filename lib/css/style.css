@@ -643,7 +643,8 @@ div.centerbox div.closebox    {
 
 div.centerbox div.title {
     text-align: center;
-    font-size: 28px;
+    font-size: 32px;
+    font-weight: bold;
 }
 
 div.centerbox div.subtitle {
