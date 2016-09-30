@@ -36,11 +36,9 @@ class PageFragments extends DB_UseSharedObjects
             $handle = curl_init();
             curl_setopt($handle, CURLOPT_HEADER, 0);
             curl_setopt($handle, CURLOPT_RETURNTRANSFER, 1);
-            if ($lang === 'ja') {
-                curl_setopt($handle, CURLOPT_URL, 'http://www.topse.jp/ja/news.html');
-            } else {
-                curl_setopt($handle, CURLOPT_URL, 'http://www.topse.jp/en/news.html');
-            }
+            $uri = $_SERVER["SCRIPT_URI"];
+            $urlHost = (strlen($uri) > 8) ? substr($uri, 0, strpos($uri, "/", 8)) : "http://www.topse.jp";
+            curl_setopt($handle, CURLOPT_URL, $urlHost . (($lang === 'ja') ? "/ja" : "/en") . "/news.html");
             $response = curl_exec($handle);
             $response = str_replace('<!DOCTYPE html>', '', $response);
             curl_close($handle);
