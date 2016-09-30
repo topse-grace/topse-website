@@ -602,14 +602,14 @@ body {
 }
 
 .after_blur1 {
-    top: -300;
-    margin-bottom: -600;
+    top: -300px;
+    margin-bottom: -600px;
     position: relative;
 }
 
 .after_blur2 {
-    top: -900;
-    margin-bottom: -900;
+    top: -900px;
+    margin-bottom: -900px;
     position: relative;
 }
 
@@ -683,4 +683,8 @@ div.centerbox td {
 
 div.centerbox ul {
     margin-left: 20px;
+}
+
+div.centerbox img {
+    width: 100%;
 }
