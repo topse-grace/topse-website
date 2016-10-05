@@ -23,18 +23,9 @@ require_once('DB_Settings.php');
 require_once('DB_UseSharedObjects.php');
 require_once('DB_AuthCommon.php');
 require_once('DB_Proxy.php');
+require_once('IMUtil.php');
 
-$currentDir = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'lib' . DIRECTORY_SEPARATOR;
-
-if (!class_exists('Crypt_RSA')) {
-    require_once($currentDir . 'phpseclib' . DIRECTORY_SEPARATOR . 'Crypt' . DIRECTORY_SEPARATOR . 'RSA.php');
-}
-if (!class_exists('Crypt_Hash')) {
-    require_once($currentDir . 'phpseclib' . DIRECTORY_SEPARATOR . 'Crypt' . DIRECTORY_SEPARATOR . 'Hash.php');
-}
-if (!class_exists('Math_BigInteger')) {
-    require_once($currentDir . 'phpseclib' . DIRECTORY_SEPARATOR . 'Math' . DIRECTORY_SEPARATOR . 'BigInteger.php');
-}
+IMUtil::includeLibClasses(IMUtil::phpSecLibRequiredClasses());
 
 $currentDirParam = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'params.php';
 $parentDirParam = dirname(dirname(__FILE__)) . DIRECTORY_SEPARATOR . 'params.php';
@@ -105,9 +96,6 @@ function IM_Entry($datasource, $options, $dbspecification, $debug = false)
         $dbInstance->initialize($datasource, $options, $dbspecification, $debug);
         $dbInstance->processingRequest("NON");
         $g_dbInstance = $dbInstance;
-    } else if (IMUtil::guessFileUploadError()) {
-        $fileUploader = new FileUploader();
-        $fileUploader->processingAsError($datasource, $options, $dbspecification, $debug);
     } else if (!isset($_POST['access']) && isset($_GET['uploadprocess'])) {
         $fileUploader = new FileUploader();
         $fileUploader->processInfo();
@@ -123,7 +111,11 @@ function IM_Entry($datasource, $options, $dbspecification, $debug = false)
         || (isset($_GET['access']) && $_GET['access'] == 'uploadfile')
     ) {
         $fileUploader = new FileUploader();
-        $fileUploader->processing($datasource, $options, $dbspecification, $debug);
+        if (IMUtil::guessFileUploadError()) {
+            $fileUploader->processingAsError($datasource, $options, $dbspecification, $debug);
+        } else {
+            $fileUploader->processing($datasource, $options, $dbspecification, $debug);
+        }
     } else if (!isset($_POST['access']) && !isset($_GET['media'])) {
         $generator = new GenerateJSCode();
         $generator->generateInitialJSCode($datasource, $options, $dbspecification, $debug);
@@ -149,13 +141,20 @@ function IM_Entry($datasource, $options, $dbspecification, $debug = false)
  */
 function loadClass($className)
 {
-    if (strpos($className, 'PHPUnit_') === false && $className !== 'PHP_Invoker' &&
+    if (strpos($className, 'PHPUnit_') === false &&
+        $className !== 'PHP_Invoker' &&
         strpos($className, 'PHPExcel_') === false &&
-        (include_once $className . '.php') === false
+        $className !== 'Composer\Autoload\ClassLoader'
     ) {
-        $errorGenerator = new GenerateJSCode();
-        if (strpos($className, "MessageStrings_") !== 0) {
-            $errorGenerator->generateErrorMessageJS("The class '{$className}' is not defined.");
+        $result = include_once $className . '.php';
+        if (!$result) {
+        
+        }
+        if (!$result) {
+            $errorGenerator = new GenerateJSCode();
+            if (strpos($className, "MessageStrings_") !== 0) {
+                $errorGenerator->generateErrorMessageJS("The class '{$className}' is not defined.");
+            }
         }
     }
 
@@ -186,7 +185,7 @@ function valueForJSInsert($str)
  * @param string prefix strings for the prefix for key
  * @return string JavaScript source
  */
-function arrayToJS($ar, $prefix)
+function arrayToJS($ar, $prefix = "")
 {
     if (is_array($ar)) {
         $items = array();

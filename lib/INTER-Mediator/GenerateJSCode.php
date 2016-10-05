@@ -20,8 +20,8 @@ class GenerateJSCode
         header('Content-Type: text/javascript;charset="UTF-8"');
         header('Cache-Control: no-store,no-cache,must-revalidate,post-check=0,pre-check=0');
         header('Expires: 0');
-        header('X-XSS-Protection: 1; mode=block');
-        header('X-Frame-Options: SAMEORIGIN');
+        $util = new IMUtil();
+        $util->outputSecurityHeaders();
     }
 
     public function generateAssignJS($variable, $value1, $value2 = '', $value3 = '', $value4 = '', $value5 = '')
@@ -61,7 +61,8 @@ class GenerateJSCode
             "generatedPrivateKey", "passPhrase", "browserCompatibility",
             "scriptPathPrefix", "scriptPathSuffix",
             "oAuthProvider", "oAuthClientID", "oAuthRedirect",
-            "passwordPolicy", "documentRootPrefix", "dbClass", "nonSupportMessageId",
+            "passwordPolicy", "documentRootPrefix", "dbClass",
+            "nonSupportMessageId", "valuesForLocalContext",
         ), true);
         $generatedPrivateKey = $params["generatedPrivateKey"];
         $passPhrase = $params["passPhrase"];
@@ -75,6 +76,7 @@ class GenerateJSCode
         $dbClass = $params["dbClass"];
         $nonSupportMessageId = $params["nonSupportMessageId"];
         $documentRootPrefix = is_null($params["documentRootPrefix"]) ? "" : $params["documentRootPrefix"];
+        $valuesForLocalContext = $params["valuesForLocalContext"];
 
         /*
          * Read the JS programs regarding by the developing or deployed.
@@ -152,9 +154,14 @@ class GenerateJSCode
             $pathToMySelf = filter_var($_SERVER['SCRIPT_NAME']);
         }
 
-        $pathToIMRootDir = mb_ereg_replace(
-            mb_ereg_replace("\\x5c", "/", "^{$documentRootPrefix}" . filter_var($_SERVER['DOCUMENT_ROOT'])),
-            "", mb_ereg_replace("\\x5c", "/", dirname(__FILE__)));
+        $pathToIMRootDir = '';
+        if (function_exists('mb_ereg_replace')) {
+            $pathToIMRootDir = mb_ereg_replace(
+                mb_ereg_replace("\\x5c", "/", "^{$documentRootPrefix}" . filter_var($_SERVER['DOCUMENT_ROOT'])),
+                "", mb_ereg_replace("\\x5c", "/", dirname(__FILE__)));
+        } else {
+            $pathToIMRootDir = '[ERROR]';
+        }
 
         $this->generateAssignJS(
             "INTERMediatorOnPage.getEntryPath", "function(){return {$q}{$pathToMySelf}{$q};}");
@@ -169,10 +176,8 @@ class GenerateJSCode
         $this->generateAssignJS(
             "INTERMediatorOnPage.getOptionsTransaction",
             "function(){return ", arrayToJS(isset($options['transaction']) ? $options['transaction'] : '', ''), ";}");
-        $this->generateAssignJS(
-            "INTERMediatorOnPage.getDBSpecification", "function(){return ",
-            arrayToJSExcluding($dbspecification, '',
-                array('dsn', 'option', 'database', 'user', 'password', 'server', 'port', 'protocol', 'datatype')), ";}");
+        $this->generateAssignJS("INTERMediatorOnPage.dbClassName","{$q}{$dbClassName}{$q}");
+
         $isEmailAsUsernae = isset($options['authentication'])
             && isset($options['authentication']['email-as-username'])
             && $options['authentication']['email-as-username'] === true;
@@ -200,7 +205,7 @@ class GenerateJSCode
         if (is_null($remoteAddr) || $remoteAddr === FALSE) {
             $remoteAddr = '0.0.0.0';
         }
-        $clientIdSeed = time() + $remoteAddr + mt_rand();
+        $clientIdSeed = time() . $remoteAddr . mt_rand();
         $randomSecret = mt_rand();
         $clientId = hash_hmac('sha256', $clientIdSeed, $randomSecret);
 
@@ -293,11 +298,17 @@ class GenerateJSCode
             (isset($options['authentication']) && isset($options['authentication']['realm'])) ?
                 $options['authentication']['realm'] : '', $q);
         if (isset($generatedPrivateKey)) {
-            $rsa = new Crypt_RSA();
+            $rsaClass = IMUtil::phpSecLibClass('phpseclib\Crypt\RSA');
+            $rsa = new $rsaClass;
             $rsa->setPassword($passPhrase);
             $rsa->loadKey($generatedPrivateKey);
             $rsa->setPassword();
-            $publickey = $rsa->getPublicKey(CRYPT_RSA_PUBLIC_FORMAT_RAW);
+            if (IMUtil::phpVersion() < 6) {
+                $publickey = $rsa->getPublicKey(CRYPT_RSA_PUBLIC_FORMAT_RAW);
+            } else {
+                $publickey = $rsa->getPublicKey(constant('phpseclib\Crypt\RSA::PUBLIC_FORMAT_RAW'));
+            }
+
             $this->generateAssignJS(
                 "INTERMediatorOnPage.publickey",
                 "new biRSAKeyPair('", $publickey['e']->toHex(), "','0','", $publickey['n']->toHex(), "')");
@@ -320,6 +331,19 @@ class GenerateJSCode
         if (isset($options['credit-including'])) {
             $this->generateAssignJS(
                 "INTERMediatorOnPage.creditIncluding", $q, $options['credit-including'], $q);
+        }
+
+        // Initial values for local context
+        if (! isset($valuesForLocalContext)) {
+            $valuesForLocalContext = array();
+        }
+        if (isset($options['local-context'])) {
+            foreach($options['local-context'] as $item) {
+                $valuesForLocalContext[$item['key']] = $item['value'];
+            }
+        }
+        if (isset($valuesForLocalContext) && is_array($valuesForLocalContext) && count($valuesForLocalContext) > 0) {
+            $this->generateAssignJS("INTERMediatorOnPage.initLocalContext", arrayToJS($valuesForLocalContext));
         }
     }
 
