@@ -1,0 +1,38 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# If provisioning by Itamae, it is necessary to install vagrant-itamae and Itamae.
+# $ vagrant plugin install vagrant-itamae
+# $ gem install itamae
+
+Vagrant.configure(2) do |config|
+  config.vm.box = "INTER-Mediator-Server"
+  config.vm.box_url = "https://inter-mediator.com/archives/INTER-Mediator-Server-Ubuntu-14.04.3.box"
+  #config.vm.box_url = "https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-i386-vagrant-disk1.box"
+  #config.vm.box_url = "file://./INTER-Mediator-Server-Ubuntu-14.04.3.box"
+  config.vm.network "private_network", ip: "192.168.56.101"
+  config.vm.synced_folder '.', '/vagrant', disabled: true
+  #config.vm.synced_folder 'html/', '/var/www/html'
+  config.vm.hostname = "inter-mediator-server"
+  config.vm.post_up_message = "INTER-Mediator-Server VM is ready."
+  config.vm.provider "virtualbox" do |vb|
+    #vb.gui = true
+    vb.memory = "1024"
+    vb.name = "INTER-Mediator-Server"
+  end
+
+  config.ssh.username = "developer"
+  config.ssh.password = "im4135dev"
+  config.ssh.pty = true
+
+  ## provisioning by shell script
+  config.vm.provision "shell", path: "deploy.sh"
+  # Testing by msyk's repository file
+  #config.vm.provision "shell", path: "https://raw.githubusercontent.com/msyk/INTER-Mediator/master/dist-docs/vm-for-trial/deploy.sh"
+
+  ## provisioning by itamae
+  #config.vm.provision :itamae do |config|
+  #  config.sudo = true
+  #  config.recipes = ['./recipe.rb']
+  #end
+end

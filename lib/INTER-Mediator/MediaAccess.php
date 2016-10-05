@@ -1,4 +1,5 @@
 <?php
+
 /**
  * INTER-Mediator
  * Copyright (c) INTER-Mediator Directive Committee (http://inter-mediator.org)
@@ -12,7 +13,6 @@
  * @link          https://inter-mediator.com/
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
-
 class MediaAccess
 {
     private $contextRecord = null;
@@ -69,8 +69,9 @@ class MediaAccess
                 header("Content-Type: " . $this->getMimeType($fileName));
                 header("Content-Length: " . strlen($content));
                 header("Content-Disposition: {$this->disposition}; filename={$dq}" . urlencode($fileName) . $dq);
-                header('X-XSS-Protection: 1; mode=block');
-                header('X-Frame-Options: SAMEORIGIN');
+                $util = new IMUtil();
+                $util->outputSecurityHeaders();
+
                 $this->outputImage($content);
             } else if (stripos($target, 'http://') === 0 || stripos($target, 'https://') === 0) { // http or https
                 if (intval(get_cfg_var('allow_url_fopen')) === 1) {
@@ -95,8 +96,9 @@ class MediaAccess
                 header("Content-Length: " . strlen($content));
                 header("Content-Disposition: {$this->disposition}; filename={$dq}"
                     . str_replace("+", "%20", urlencode($fileName)) . $dq);
-                header('X-XSS-Protection: 1; mode=block');
-                header('X-Frame-Options: SAMEORIGIN');
+                $util = new IMUtil();
+                $util->outputSecurityHeaders();
+
                 $this->outputImage($content);
             } else if (stripos($target, 'class://') === 0) { // class
                 $noscheme = substr($target, 8);
@@ -155,12 +157,18 @@ class MediaAccess
                     include($currentDirParam);
                 }
 
-                $rsa = new Crypt_RSA();
+                $rsaClass = IMUtil::phpSecLibClass('phpseclib\Crypt\RSA');
+                $rsa = new $rsaClass;
                 $rsa->setPassword($passPhrase);
                 $rsa->loadKey($generatedPrivateKey);
                 $rsa->setPassword();
                 $privatekey = $rsa->getPrivateKey();
-                $priv = $rsa->_parseKey($privatekey, CRYPT_RSA_PRIVATE_FORMAT_PKCS1);
+                if (IMUtil::phpVersion() < 6) {
+                    $priv = $rsa->_parseKey($privatekey, CRYPT_RSA_PRIVATE_FORMAT_PKCS1);
+                } else {
+                    $priv = $rsa->_parseKey($privatekey, constant('phpseclib\Crypt\RSA::PRIVATE_FORMAT_PKCS1'));
+                }
+
                 require_once('lib/bi2php/biRSA.php');
                 $keyDecrypt = new biRSAKeyPair('0', $priv['privateExponent']->toHex(), $priv['modulus']->toHex());
 
@@ -216,13 +224,15 @@ class MediaAccess
             if (!$dbProxyInstance->checkMediaToken($_COOKIE[$cookieNameUser], $_COOKIE[$cookieNameToken])) {
                 $this->exitAsError(401);
             }
-            if (isset($context['authentication']['load'])){
+            if (isset($context['authentication']['load'])) {
                 $authInfoField = $dbProxyInstance->dbClass->getFieldForAuthorization("load");
                 $authInfoTarget = $dbProxyInstance->dbClass->getTargetForAuthorization("load");
-            }
-            else if (isset($context['authentication']['read'])){
+            } else if (isset($context['authentication']['read'])) {
                 $authInfoField = $dbProxyInstance->dbClass->getFieldForAuthorization("read");
                 $authInfoTarget = $dbProxyInstance->dbClass->getTargetForAuthorization("read");
+            } else if (isset($context['authentication']['all'])) {
+                $authInfoField = $dbProxyInstance->dbClass->getFieldForAuthorization("all");
+                $authInfoTarget = $dbProxyInstance->dbClass->getTargetForAuthorization("all");
             }
 
             if ($authInfoTarget == 'field-user') {
@@ -256,18 +266,20 @@ class MediaAccess
             } else if ($authInfoTarget == 'field-group') {
                 //
             } else {
-                if (isset($context['authentication']['load'])){
+                if (isset($context['authentication']['load'])) {
                     $authorizedUsers = $dbProxyInstance->dbClass->getAuthorizedUsers("load");
                     $authorizedGroups = $dbProxyInstance->dbClass->getAuthorizedGroups("load");
-                }
-                else if (isset($context['authentication']['read'])){
+                } else if (isset($context['authentication']['read'])) {
                     $authorizedUsers = $dbProxyInstance->dbClass->getAuthorizedUsers("read");
                     $authorizedGroups = $dbProxyInstance->dbClass->getAuthorizedGroups("read");
+                } else if (isset($context['authentication']['all'])) {
+                    $authorizedUsers = $dbProxyInstance->dbClass->getAuthorizedUsers("all");
+                    $authorizedGroups = $dbProxyInstance->dbClass->getAuthorizedGroups("all");
                 }
-                if (count($authorizedGroups) == 0 && count($authorizedUsers) == 0)   {
+                if (count($authorizedGroups) == 0 && count($authorizedUsers) == 0) {
                     return;
                 }
-                if (in_array($dbProxyInstance->dbClass->dbSettings->getCurrentUser(), $authorizedUsers))   {
+                if (in_array($dbProxyInstance->dbClass->dbSettings->getCurrentUser(), $authorizedUsers)) {
                     return;
                 }
                 $belongGroups = $dbProxyInstance->dbClass->authSupportGetGroupsOfUser($_COOKIE[$cookieNameUser]);
@@ -296,7 +308,7 @@ class MediaAccess
                 }
             }
             if ($indexKeying == -1) {
-            //    $this->exitAsError(401);
+                //    $this->exitAsError(401);
             }
             $dbProxyInstance->dbSettings->setDataSourceName($contextName);
             $this->contextRecord = $dbProxyInstance->readFromDB();
@@ -345,7 +357,8 @@ class MediaAccess
     {
         $rotate = false;
         if (function_exists('exif_imagetype') && function_exists('imagejpeg') &&
-            strlen($content) > 0) {
+            strlen($content) > 0
+        ) {
             $tmpDir = ini_get('upload_tmp_dir');
             if ($tmpDir === '') {
                 $tmpDir = sys_get_temp_dir();
@@ -369,8 +382,8 @@ class MediaAccess
                     $image = imagecreatefromstring($content);
                     if ($image !== false) {
                         $exif = exif_read_data($tempPath);
-                        if($exif !== false && !empty($exif['Orientation'])) {
-                            switch($exif['Orientation']) {
+                        if ($exif !== false && !empty($exif['Orientation'])) {
+                            switch ($exif['Orientation']) {
                                 case 3:
                                     $content = imagerotate($image, 180, 0);
                                     $rotate = true;
@@ -392,8 +405,9 @@ class MediaAccess
                         imagejpeg($content);
                         $size = ob_get_length();
                         header('Content-Length: ' . $size);
-                        header('X-XSS-Protection: 1; mode=block');
-                        header('X-Frame-Options: SAMEORIGIN');
+                        $util = new IMUtil();
+                        $util->outputSecurityHeaders();
+
                         ob_end_flush();
                     }
                     imagedestroy($image);

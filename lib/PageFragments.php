@@ -36,15 +36,15 @@ class PageFragments extends DB_UseSharedObjects
             $handle = curl_init();
             curl_setopt($handle, CURLOPT_HEADER, 0);
             curl_setopt($handle, CURLOPT_RETURNTRANSFER, 1);
-            $uri = $_SERVER["SCRIPT_URI"];
+            $uri = isset($_SERVER["SCRIPT_URI"]) ? $_SERVER["SCRIPT_URI"] : "http://www.topse.jp/ja/news.html";
             $urlHost = (strlen($uri) > 8) ? substr($uri, 0, strpos($uri, "/", 8)) : "http://www.topse.jp";
             curl_setopt($handle, CURLOPT_URL, $urlHost . (($lang === 'ja') ? "/ja" : "/en") . "/news.html");
             $response = curl_exec($handle);
-            $response = str_replace('<!DOCTYPE html>', '', $response);
             curl_close($handle);
             $dom->loadHTML($response);
             libxml_clear_errors();
-            $result = $dom->getElementsByTagName('li');
+            $xpath = new DOMXpath($dom);
+            $result = $xpath->query('//li');
             for ($i = 0; $i < $result->length; $i++) {
                 $node = $result->item($i);
                 if ($node->textContent != "\n" && strpos($node->getAttribute('class'), 'top3') !== false) {
@@ -83,16 +83,21 @@ class PageFragments extends DB_UseSharedObjects
         $dom->recover = true;
         $dom->strictErrorChecking = false;
         libxml_use_internal_errors(true);
-        $dom->loadHTML(mb_convert_encoding(file_get_contents($filename), 'HTML-ENTITIES', 'UTF-8'));
-        $result = $dom->getElementsByTagName("body");
-        $nodeList = $result->item(0)->childNodes;
-        $newDom = new DOMDocument;
-        for ($i = 0; $i < $nodeList->length; $i++) {
-            $node = $nodeList->item($i);
-            if ($node->textContent != "\n") {
-                $newDom->appendChild($newDom->importNode($node, true));
+        $fContent = mb_convert_encoding(file_get_contents($filename), 'HTML-ENTITIES', 'UTF-8');
+        $loadStatus = $dom->loadHTML($fContent);
+        if (! $loadStatus) {
+            return null;
+        } else {
+            $xpath = new DOMXpath($dom);
+            $nodeList = $xpath->query('body/*');
+            $newDom = new DOMDocument;
+            for ($i = 0; $i < $nodeList->length; $i++) {
+                $node = $nodeList->item($i);
+                if ($node->textContent != "\n") {
+                    $newDom->appendChild($newDom->importNode($node, true));
+                }
             }
+            return $newDom->saveHTML();
         }
-        return $newDom->saveHTML();
     }
 }
