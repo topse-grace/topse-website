@@ -33,9 +33,256 @@
 <section class="row">
     <div class="container">
         <h2>コース・講義一覧（2016年度）</h2>
-        <p>各講義のシラバスは，<a href="https://lms.cb.ecloud.nii.ac.jp/portal/syllabus.html"
-                        target="_blank">こちらをクリック[別ウインドウに表示]</a>して表示される講義一覧よりご覧ください．</p>
-        <br/><br/><br/><br/><br/><br/><br/><br/>
+        <hr>
+        <table style="border-collapse:collapse;">
+            <thead>
+            <tr>
+                <th width="60" class="bottom_boldline" style="line-height: 100%;">
+                    <span style="cursor: pointer" data-im="_@addorder:subjectlist:semester:asc">開催<br>時期</span>
+                </th>
+                <th width="95" class="bottom_boldline">
+                    <span style="cursor: pointer" data-im="_@addorder:subjectlist:course_name:asc">コース</span>
+                </th>
+                <th width="420" class="bottom_boldline">
+                    <span style="cursor: pointer" data-im="_@addorder:subjectlist:name:asc">講義名（アイコンは遠隔対応）</span>
+                </th>
+                <th width="160" class="bottom_boldline" style="background-color: #e5e5e5">講義の傾向</th>
+                <th class="bottom_boldline">講義概要/SWEBOK</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td style="text-align: center;">
+            <span style="font-size: 70%;background-color:#cacaca;border-radius: 10px;padding: 6px"
+                  data-im="subjectlist@semester_string"></span>
+                </td>
+                <td style="text-align: center;line-height: 11px">
+                    <span style="font-size: 70%;" data-im="subjectlist@course_name"></span>
+                </td>
+                <td style="padding: 4px;" data-im="subjectlist@course_color@style.backgroundColor">
+                    <img src="images/R-$.png" data-im="subjectlist@remote_Q1a@$src"
+                         style="height:32px; float: right"/>
+                    <span data-im="subjectlist@name"></span>
+                </td>
+                <td style="text-align: center;background-color: #e5e5e5;">
+                    <img src="images/4-1.png" data-im="subjectlist@spec_Q41_on@style.display" class="icon"/>
+                    <img src="images/4-2.png" data-im="subjectlist@spec_Q42_on@style.display" class="icon"/>
+                    <img src="images/4-3.png" data-im="subjectlist@spec_Q43_on@style.display" class="icon"/>
+                    <img src="images/4-4.png" data-im="subjectlist@spec_Q44_on@style.display" class="icon"/>
+                    <img src="images/4-5.png" data-im="subjectlist@spec_Q45_on@style.display" class="icon"/>
+                    <img src="images/4-6.png" data-im="subjectlist@spec_Q46_on@style.display" class="icon"/>
+                </td>
+                <td style="text-align: left; font-size: 80%">
+                    <span data-im="subjectlist@summary_spec"></span>
+                </td>
+            </tr>
+            <tr>
+                <!--<td>-->
+                <!--<span data-im="subjectlist@summary_wday"></span>-->
+                <!--</td>-->
+                <td colspan="2" style="text-align:center;" class="bottom_line">
+                    <span style="display:none;" class="codenode" data-im="subjectlist@subject_id"></span>
+                </td>
+                <td style="font-size: 80%;padding-left: 20px;" class="bottom_line">
+                    <span class="label">担当講師：</span>
+                    <span data-im="subjectlist@teachers"></span>
+                </td>
+                <td class="bottom_line" style="text-align: center;background-color: #e5e5e5;">
+                    <img src="images/1-$.png" data-im="subjectlist@spec_Q1@$src" class="icon"/>
+                    <img src="images/2-$.png" data-im="subjectlist@spec_Q2_Q3@$src" class="icon"/>
+                </td>
+                <td class="bottom_line" style="text-align: center;">
+                    <span data-im="subjectlist@spec_Q5_string@innerHTML"></span>
+                </td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <td colspan="5">
+                    <div>開催時期、コース名、講義名の見出し文字列をクリックすることで、その列を基準に並べ替えます。</div>
+                    <h2>凡例：講義の傾向</h2>
+                    <img src="images/1-1.png" class="icon"/>基礎科目,
+                    <img src="images/1-2.png" class="icon"/>応用科目,
+                    <img src="images/2-1.png" class="icon"/>講義中心,
+                    <img src="images/2-2.png" class="icon"/>演習50%未満/グループ演習50%未満,
+                    <img src="images/2-3.png" class="icon"/>演習50%未満/グループ演習50%以上,
+                    <img src="images/2-4.png" class="icon"/>演習50%以上/グループ演習50%未満,
+                    <img src="images/2-5.png" class="icon"/>演習50%以上/グループ演習50%以上,
+                    <img src="images/4-1.png" class="icon"/>事例を扱う,
+                    <img src="images/4-2.png" class="icon"/>先端研究を扱う,
+                    <img src="images/4-3.png" class="icon"/>網羅的な内容,
+                    <img src="images/4-4.png" class="icon"/>確立済理論,
+                    <img src="images/4-5.png" class="icon"/>トレンドツール,
+                    <img src="images/4-6.png" class="icon"/>実践的な内容,
+                    <h2>凡例：SWEBOK</h2>
+                    <img src="images/s-1.png" class="icon"/>要求,
+                    <img src="images/s-2.png" class="icon"/>設計,
+                    <img src="images/s-3.png" class="icon"/>構築,
+                    <img src="images/s-4.png" class="icon"/>テスティング,
+                    <img src="images/s-5.png" class="icon"/>保守,
+                    <img src="images/s-6.png" class="icon"/>構成管理,
+                    <img src="images/s-7.png" class="icon"/>エンジニアリング・マネジメント,
+                    <img src="images/s-8.png" class="icon"/>エンジニアリングプロセス,
+                    <img src="images/s-9.png" class="icon"/>エンジニアリングモデルおよび方法,
+                    <img src="images/s-10.png" class="icon"/>品質,
+                    <img src="images/s-11.png" class="icon"/>エンジニアリング専門技術者実践規律,
+                    <img src="images/s-12.png" class="icon"/>エンジニアリング経済学,
+                    <img src="images/s-13.png" class="icon"/>計算基礎,
+                    <img src="images/s-14.png" class="icon"/>数学基礎
+                </td>
+            </tr>
+            </tfoot>
+        </table>
+        <div class="syllabus_body" data-im-control="enclosure">
+            <div data-im-control="repeater">
+                <span class="label">コース:</span>
+                <span data-im-control="enclosure">
+                <span data-im-control="repeater">
+                    <span data-im="course_master@name"></span>
+                </span>
+            </span>
+                <span class="label">実施年度:</span>
+                <span data-im="subjectdetail@executed_year"></span>
+                <span class="label">実施学期:</span>
+                <span data-im="subjectdetail@semester_string"></span>
+                <span class="label">講義回数:</span>
+                <span data-im="subjectdetail@times"></span>
+
+                <h3>
+                <span data-im-control="enclosure">
+                    <span data-im-control="repeater" data-im="label@label1"></span>
+                </span>
+                </h3>
+                <p><span data-im="subjectdetail@name"></span></p>
+                <h3>
+                <span data-im-control="enclosure">
+                    <span data-im-control="repeater" data-im="label@label2"></span>
+                </span>
+                </h3>
+                <p>
+            <span data-im-control="enclosure">
+                <span data-im-control="repeater">
+                    <span data-im="responsiblelist@teacher_id" style="display:none"></span>
+                    <span data-im-control="enclosure">
+                        <span data-im-control="repeater">
+                            <span data-im="teacherlist@name"></span>
+                        </span>
+                    </span>
+                </span>
+                <span data-im-control="separator">, </span>
+            </span>
+                </p>
+                <div data-im="subjectdetail@style_purpose@style.display">
+                    <h3>
+                    <span data-im-control="enclosure">
+                        <span data-im-control="repeater" data-im="label@label3"></span>
+                    </span>
+                    </h3>
+                    <div data-im="subjectdetail@syllabus_purpose@innerHTML"></div>
+                </div>
+                <div data-im="subjectdetail@style_originality@style.display">
+                    <h3>
+                    <span data-im-control="enclosure">
+                        <span data-im-control="repeater" data-im="label@label4"></span>
+                    </span>
+                    </h3>
+                    <div data-im="subjectdetail@syllabus_originality@innerHTML"></div>
+                </div>
+                <div data-im="subjectdetail@style_difficulty@style.display">
+                    <h3>
+                    <span data-im-control="enclosure">
+                        <span data-im-control="repeater" data-im="label@label5"></span>
+                    </span>
+                    </h3>
+                    <div data-im="subjectdetail@syllabus_difficulty@innerHTML"></div>
+                </div>
+                <div data-im="subjectdetail@style_knowledge@style.display">
+                    <h3>
+                    <span data-im-control="enclosure">
+                        <span data-im-control="repeater" data-im="label@label6"></span>
+                    </span>
+                    </h3>
+                    <div data-im="subjectdetail@syllabus_knowledge@innerHTML"></div>
+                </div>
+                <div data-im="subjectdetail@style_prereq@style.display">
+                    <h3>
+                    <span data-im-control="enclosure">
+                        <span data-im-control="repeater" data-im="label@label7"></span>
+                    </span>
+                    </h3>
+                    <div data-im="subjectdetail@syllabus_prereq@innerHTML"></div>
+                </div>
+                <h3>
+                <span data-im-control="enclosure">
+                    <span data-im-control="repeater" data-im="label@label8"></span>
+                </span>
+                </h3>
+                <div data-im="subjectdetail@style_schedule@style.display">
+                    <h4>
+                    <span data-im-control="enclosure">
+                        <span data-im-control="repeater" data-im="label@label14"></span>
+                    </span>
+                    </h4>
+                    <div data-im="subjectdetail@syllabus_schedule@innerHTML"></div>
+                </div>
+                <div data-im="subjectdetail@style_detail@style.display">
+                    <h4>
+                    <span data-im-control="enclosure">
+                        <span data-im-control="repeater" data-im="label@label15"></span>
+                    </span>
+                    </h4>
+                    <div data-im="subjectdetail@syllabus_detail@innerHTML"></div>
+                </div>
+                <div data-im="subjectdetail@style_effect@style.display">
+                    <h3>
+                    <span data-im-control="enclosure">
+                        <span data-im-control="repeater" data-im="label@label9"></span>
+                    </span>
+                    </h3>
+                    <div data-im="subjectdetail@syllabus_effect@innerHTML"></div>
+                </div>
+                <div data-im="subjectdetail@style_tools@style.display">
+                    <h3>
+                    <span data-im-control="enclosure">
+                        <span data-im-control="repeater" data-im="label@label10"></span>
+                    </span>
+                    </h3>
+                    <div data-im="subjectdetail@syllabus_tools@innerHTML"></div>
+                </div>
+                <div data-im="subjectdetail@style_eval@style.display">
+                    <h3>
+                    <span data-im-control="enclosure">
+                        <span data-im-control="repeater" data-im="label@label11"></span>
+                    </span>
+                    </h3>
+                    <div data-im="subjectdetail@syllabus_eval@innerHTML"></div>
+                </div>
+                <div data-im="subjectdetail@style_ex@style.display">
+                    <h3>
+                    <span data-im-control="enclosure">
+                        <span data-im-control="repeater" data-im="label@label12"></span>
+                    </span>
+                    </h3>
+                    <div data-im="subjectdetail@syllabus_ex@innerHTML"></div>
+                </div>
+                <div data-im="subjectdetail@style_textbooks@style.display">
+                    <h3>
+                    <span data-im-control="enclosure">
+                        <span data-im-control="repeater" data-im="label@label13"></span>
+                    </span>
+                    </h3>
+                    <div data-im="subjectdetail@syllabus_textbooks@innerHTML"></div>
+                </div>
+                <div data-im="subjectdetail@style_originality2@style.display">
+                    <h3>
+                    <span data-im-control="enclosure">
+                        <span data-im-control="repeater" data-im="label@label4"></span>
+                    </span>
+                    </h3>
+                    <div data-im="subjectdetail@syllabus_originality@innerHTML"></div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 </body>
