@@ -41,22 +41,7 @@
             display: none;
         }
 
-        .teacher TH {
-            min-width: 80px;
-            text-align: right;
-            vertical-align: top;
-            border: none;
-            white-space: nowrap;
-            background-color: white;
-        }
-
-        .teacher TD {
-            text-align: left;
-            vertical-align: top;
-            border: none;
-        }
-
-        .teacher IMG {
+        IMG.teacher {
             width: 120px;
             margin: 0 20px 0 20px;
         }
@@ -73,12 +58,6 @@
             font-size: 12px;
         }
 
-        .teacher {
-            margin-left: 22px;
-            font-size: 12px;
-            border: none;
-        }
-
         .affiliation {
             margin: 0 0 0 14px;
             color: dimgray;
@@ -89,7 +68,7 @@
             flex-wrap: nowrap;
             justify-content: flex-start;
             align-items: flex-start;
-            flex-direction:row;
+            flex-direction:column;
         }
 
         DIV.listitem {
@@ -152,7 +131,7 @@
                     </div>
                     <div>
                         <img src="https://lms.cb.ecloud.nii.ac.jp/portal/images/"
-                             data-im="teachers2016@photofile@#src"/>
+                             data-im="teachers2016@photofile@#src" class="teacher"/>
                     </div>
                 </div>
             </div>
