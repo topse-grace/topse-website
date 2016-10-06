@@ -27,6 +27,156 @@
         .submenu-admission {
             display: none;
         }
+
+        .detailtable TH {
+            text-align: right;
+            vertical-align: top;
+        }
+
+        .detailtable INPUT {
+            font-size: 14pt;
+        }
+
+        .detailtable SELECT {
+            font-size: 14pt;
+        }
+
+        .datelisttable TH {
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .label {
+            font-weight: bold;
+        }
+
+        TD {
+            /*border: solid 1px #999999;*/
+            vertical-align: middle;
+        }
+
+        .IM_Button_Master {
+            width: 140px;
+            height: 32px;
+            padding: 4px;
+            marging: 0;
+            border: solid 1px #BBBBBB;
+            border-radius: 5px;
+            background-color: #F7F7F7;
+            box-shadow: 0 2px 2px rgba(0.0, 0.0, 0.0, 0.4);
+            cursor: pointer;
+            color: #333333;
+            font-size: 12pt;
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+            vertical-align: middle;
+            display: inline-block;
+        }
+
+        .IM_Button_BackNavi {
+            position: fixed;
+            top: 5px;
+            left: 5px;
+            width: 100px;
+            padding: 10px;
+            marging: 0;
+            border: solid 1px #BBBBBB;
+            border-radius: 5px;
+            background-color: #F7F7F7;
+            box-shadow: 0 2px 2px rgba(0.0, 0.0, 0.0, 0.4);
+            cursor: pointer;
+            color: #333333;
+            font-size: 14pt;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            vertical-align: middle;
+            display: inline-block;
+        }
+
+        H1 {
+            padding-left: 110px;
+        }
+
+        ._im_markdown_p1 {
+            text-align: center;
+            font-weight: bold;
+        }
+
+        ._im_markdown_p2 {
+
+        }
+
+        ._im_markdown_p3 {
+
+        }
+
+        .bottom_line {
+            border-bottom: solid 1px black;
+        }
+
+        .bottom_boldline {
+            border-bottom: solid 2px black;
+        }
+
+        .icon {
+            height: 28px;
+            background-color: transparent;
+        }
+
+        .syllabus_body {
+            margin: 0 8px 0 8px;
+        }
+
+        .syllabus_body H3 {
+            font-size: 16pt;
+            color: #333333;
+            margin: 12px 0 0 0;
+            padding: 0;
+        }
+
+        .syllabus_body H4 {
+            font-size: 13pt;
+            color: #333333;
+            margin: 8px 0 0 15px;
+            padding: 0;
+        }
+
+        .syllabus_body P {
+            font-size: 13pt;
+            margin: 0 0 0 15px;
+            padding: 0;
+        }
+
+        .syllabus_body TABLE._im_markdown_table {
+            border-collapse: collapse;
+            border-width: 0;
+            margin: 0 0 8px 15px;
+        }
+
+        TR._im_markdown_tr {
+
+        }
+
+        TD._im_markdown_td {
+            border: solid 1px black;
+        }
+
+        P._im_markdown_para_img {
+            text-align: center;
+        }
+
+        .syllabus_body P._im_markdown_p1 {
+            margin: 8px 0 0 0;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        li._im_markdown_li {
+            font-size: 13pt;
+        }
+
     </style>
 </head>
 <body>
@@ -60,17 +210,17 @@
                     <span style="font-size: 70%;" data-im="subjectlist@course_name"></span>
                 </td>
                 <td style="padding: 4px;" data-im="subjectlist@course_color@style.backgroundColor">
-                    <img src="images/R-$.png" data-im="subjectlist@remote_Q1a@$src"
+                    <img src="../images/R-$.png" data-im="subjectlist@remote_Q1a@$src"
                          style="height:32px; float: right"/>
                     <span data-im="subjectlist@name"></span>
                 </td>
                 <td style="text-align: center;background-color: #e5e5e5;">
-                    <img src="images/4-1.png" data-im="subjectlist@spec_Q41_on@style.display" class="icon"/>
-                    <img src="images/4-2.png" data-im="subjectlist@spec_Q42_on@style.display" class="icon"/>
-                    <img src="images/4-3.png" data-im="subjectlist@spec_Q43_on@style.display" class="icon"/>
-                    <img src="images/4-4.png" data-im="subjectlist@spec_Q44_on@style.display" class="icon"/>
-                    <img src="images/4-5.png" data-im="subjectlist@spec_Q45_on@style.display" class="icon"/>
-                    <img src="images/4-6.png" data-im="subjectlist@spec_Q46_on@style.display" class="icon"/>
+                    <img src="../images/4-1.png" data-im="subjectlist@spec_Q41_on@style.display" class="icon"/>
+                    <img src="../images/4-2.png" data-im="subjectlist@spec_Q42_on@style.display" class="icon"/>
+                    <img src="../images/4-3.png" data-im="subjectlist@spec_Q43_on@style.display" class="icon"/>
+                    <img src="../images/4-4.png" data-im="subjectlist@spec_Q44_on@style.display" class="icon"/>
+                    <img src="../images/4-5.png" data-im="subjectlist@spec_Q45_on@style.display" class="icon"/>
+                    <img src="../images/4-6.png" data-im="subjectlist@spec_Q46_on@style.display" class="icon"/>
                 </td>
                 <td style="text-align: left; font-size: 80%">
                     <span data-im="subjectlist@summary_spec"></span>
@@ -88,8 +238,8 @@
                     <span data-im="subjectlist@teachers"></span>
                 </td>
                 <td class="bottom_line" style="text-align: center;background-color: #e5e5e5;">
-                    <img src="images/1-$.png" data-im="subjectlist@spec_Q1@$src" class="icon"/>
-                    <img src="images/2-$.png" data-im="subjectlist@spec_Q2_Q3@$src" class="icon"/>
+                    <img src="../images/1-$.png" data-im="subjectlist@spec_Q1@$src" class="icon"/>
+                    <img src="../images/2-$.png" data-im="subjectlist@spec_Q2_Q3@$src" class="icon"/>
                 </td>
                 <td class="bottom_line" style="text-align: center;">
                     <span data-im="subjectlist@spec_Q5_string@innerHTML"></span>
@@ -101,34 +251,34 @@
                 <td colspan="5">
                     <div>開催時期、コース名、講義名の見出し文字列をクリックすることで、その列を基準に並べ替えます。</div>
                     <h2>凡例：講義の傾向</h2>
-                    <img src="images/1-1.png" class="icon"/>基礎科目,
-                    <img src="images/1-2.png" class="icon"/>応用科目,
-                    <img src="images/2-1.png" class="icon"/>講義中心,
-                    <img src="images/2-2.png" class="icon"/>演習50%未満/グループ演習50%未満,
-                    <img src="images/2-3.png" class="icon"/>演習50%未満/グループ演習50%以上,
-                    <img src="images/2-4.png" class="icon"/>演習50%以上/グループ演習50%未満,
-                    <img src="images/2-5.png" class="icon"/>演習50%以上/グループ演習50%以上,
-                    <img src="images/4-1.png" class="icon"/>事例を扱う,
-                    <img src="images/4-2.png" class="icon"/>先端研究を扱う,
-                    <img src="images/4-3.png" class="icon"/>網羅的な内容,
-                    <img src="images/4-4.png" class="icon"/>確立済理論,
-                    <img src="images/4-5.png" class="icon"/>トレンドツール,
-                    <img src="images/4-6.png" class="icon"/>実践的な内容,
+                    <img src="../images/1-1.png" class="icon"/>基礎科目,
+                    <img src="../images/1-2.png" class="icon"/>応用科目,
+                    <img src="../images/2-1.png" class="icon"/>講義中心,
+                    <img src="../images/2-2.png" class="icon"/>演習50%未満/グループ演習50%未満,
+                    <img src="../images/2-3.png" class="icon"/>演習50%未満/グループ演習50%以上,
+                    <img src="../images/2-4.png" class="icon"/>演習50%以上/グループ演習50%未満,
+                    <img src="../images/2-5.png" class="icon"/>演習50%以上/グループ演習50%以上,
+                    <img src="../images/4-1.png" class="icon"/>事例を扱う,
+                    <img src="../images/4-2.png" class="icon"/>先端研究を扱う,
+                    <img src="../images/4-3.png" class="icon"/>網羅的な内容,
+                    <img src="../images/4-4.png" class="icon"/>確立済理論,
+                    <img src="../images/4-5.png" class="icon"/>トレンドツール,
+                    <img src="../images/4-6.png" class="icon"/>実践的な内容,
                     <h2>凡例：SWEBOK</h2>
-                    <img src="images/s-1.png" class="icon"/>要求,
-                    <img src="images/s-2.png" class="icon"/>設計,
-                    <img src="images/s-3.png" class="icon"/>構築,
-                    <img src="images/s-4.png" class="icon"/>テスティング,
-                    <img src="images/s-5.png" class="icon"/>保守,
-                    <img src="images/s-6.png" class="icon"/>構成管理,
-                    <img src="images/s-7.png" class="icon"/>エンジニアリング・マネジメント,
-                    <img src="images/s-8.png" class="icon"/>エンジニアリングプロセス,
-                    <img src="images/s-9.png" class="icon"/>エンジニアリングモデルおよび方法,
-                    <img src="images/s-10.png" class="icon"/>品質,
-                    <img src="images/s-11.png" class="icon"/>エンジニアリング専門技術者実践規律,
-                    <img src="images/s-12.png" class="icon"/>エンジニアリング経済学,
-                    <img src="images/s-13.png" class="icon"/>計算基礎,
-                    <img src="images/s-14.png" class="icon"/>数学基礎
+                    <img src="../images/s-1.png" class="icon"/>要求,
+                    <img src="../images/s-2.png" class="icon"/>設計,
+                    <img src="../images/s-3.png" class="icon"/>構築,
+                    <img src="../images/s-4.png" class="icon"/>テスティング,
+                    <img src="../images/s-5.png" class="icon"/>保守,
+                    <img src="../images/s-6.png" class="icon"/>構成管理,
+                    <img src="../images/s-7.png" class="icon"/>エンジニアリング・マネジメント,
+                    <img src="../images/s-8.png" class="icon"/>エンジニアリングプロセス,
+                    <img src="../images/s-9.png" class="icon"/>エンジニアリングモデルおよび方法,
+                    <img src="../images/s-10.png" class="icon"/>品質,
+                    <img src="../images/s-11.png" class="icon"/>エンジニアリング専門技術者実践規律,
+                    <img src="../images/s-12.png" class="icon"/>エンジニアリング経済学,
+                    <img src="../images/s-13.png" class="icon"/>計算基礎,
+                    <img src="../images/s-14.png" class="icon"/>数学基礎
                 </td>
             </tr>
             </tfoot>

@@ -118,6 +118,7 @@ IM_Entry(
                     "expression" => "if(spec_Q4_6=1,'inline','none')",
                 ),
             ),
+            "db-class" => "PDO",
         ),
         array(
             "name" => "subjectdetail",
@@ -164,6 +165,18 @@ IM_Entry(
                 array("field" => "style_textbooks", "expression" => "if(length(syllabus_textbooks)<70,'none','block')"),
                 array("field" => "style_originality2", "expression" => "if(length(syllabus_originality)<70 || label_id=1,'none','block')"),
             ),
+            "db-class" => "PDO",
+        ),
+        array(
+            "name" => "label",
+            "view" => "syllabus_label",
+            "table" => "nothing_at_all",
+            "key" => "label_id",
+            "cache" => true,
+            "relation" => array(
+                array("foreign-key" => "label_id", "join-field" => "label_id", "operator" => "="),
+            ),
+            "db-class" => "PDO",
         ),
     ),
     array(
