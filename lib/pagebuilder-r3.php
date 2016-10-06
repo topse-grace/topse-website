@@ -185,6 +185,33 @@ IM_Entry(
             ),
             "db-class" => "PDO",
         ),
+        array(
+            "name" => "responsiblelist",
+            "view" => "responsible",
+            "table" => "dummy",
+            "key" => "id",
+            "relation" => array(
+                array("foreign-key" => "subject_id", "join-field" => "subject_id", "operator" => "="),
+            ),
+            'sort' => array(
+                array("field" => "ordering", "direction" => "asc")
+            ),
+            "db-class" => "PDO",
+        ),
+        array(
+            "name" => "teacherlist",
+            "view" => "teacher",
+            "table" => "nothing_at_all",
+            "key" => "teacher_id",
+            'sort' => array(
+                array("field" => "name_kana", "direction" => "asc")
+            ),
+            "relation" => array(
+                array("foreign-key" => "teacher_id", "join-field" => "teacher_id", "operator" => "="),
+            ),
+            "db-class" => "PDO",
+        ),
+
     ),
     array(
         'formatter' => array(
