@@ -15,6 +15,19 @@
     <script src="../lib/js/bootstrap.min.js"></script>
     <script src="../lib/pagebuilder-r3.php"></script>
     <script src="../lib/pagebuilder-r3.js"></script>
+    <script>
+        function toggleDetail(id) {
+            var link = document.getElementById("box" + id);
+            var table = document.getElementById("table" + id);
+            if (table.style.display == "none") {
+                table.style.display = "flex";
+                link.innerHTML = "閉じる";
+            } else {
+                table.style.display = "none";
+                link.innerHTML = "プロフィール";
+            }
+        }
+    </script>
     <style>
         .submenu-curriculum {
             display: block;
@@ -27,16 +40,113 @@
         .submenu-admission {
             display: none;
         }
+
+        IMG.teacher {
+            width: 120px;
+            margin: 0 20px 0 20px;
+        }
+
+        H3 {
+            margin: 18px 0 0 0;
+            padding: 0;
+            font-size: 16pt;
+        }
+
+        .contorollink {
+            margin: 0 0 0 22px;
+            padding: 0;
+            font-size: 12px;
+        }
+
+        .affiliation {
+            margin: 0 0 0 14px;
+            color: dimgray;
+        }
+
+        DIV.itemtable {
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: flex-start;
+            align-items: flex-start;
+            flex-direction:column;
+        }
+
+        DIV.listitem {
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: flex-start;
+            align-items: flex-start;
+            flex-direction:row;
+        }
+
+        DIV.listlabel {
+            min-width: 120px;
+            max-width: 120px;
+            text-align: right;
+            vertical-align: top;
+            font-size: 12pt;
+            color: #696969;
+            font-weight: bold;
+        }
+
+        DIV.listdata {
+            text-align: left;
+            vertical-align: top;
+            font-size: 12pt;
+        }
+
     </style>
 </head>
 <body style="padding-top:0px;">
 <section class="row">
     <div class="container" style="background-color:#fff">
         <h2>講師一覧（2016年度）</h2>
-        <p><a href="https://lms.cb.ecloud.nii.ac.jp/portal/web_teachers28.html" target="_blank">こちらをクリック[別ウインドウに表示]</a>して表示される講師一覧よりご覧ください．
-            <br/><br/><br/><br/><br/><br/>
-        </p>
+        <hr>
+        <!--<p><a href="https://lms.cb.ecloud.nii.ac.jp/portal/web_teachers28.html" target="_blank">こちらをクリック[別ウインドウに表示]</a>して表示される講師一覧よりご覧ください．-->
+        <!--<br/><br/><br/><br/><br/><br/>-->
+        <!--</p>-->
+        <div data-im-control="enclosure">
+            <div data-im-control="repeater">
+                <h3>
+                    <span data-im="teachers2016@teacher_name" style="font-weight: bold;"></span>
+                    <span class="affiliation" data-im="teachers2016@affiliation"></span>
+                </h3>
+                <div class="contorollink">
+                    <a href="javascript:toggleDetail($)" id="box"
+                       data-im="teachers2016@teacher_id@$href teachers2016@teacher_id@#id">プロフィール</a>
+                </div>
+                <div id="table" data-im="teachers2016@teacher_id@#id" style="display:none;">
+                    <div class="itemtable">
+                        <div class="listitem">
+                            <div class="listlabel">担当講義：</div>
+                            <div class="listdata" data-im="teachers2016@subjects"></div>
+                        </div>
+                        <div class="listitem">
+                            <div class="listlabel">所属・役職：</div>
+                            <div class="listdata">
+                                <span data-im="teachers2016@affiliation"></span>
+                                <span data-im="teachers2016@title"></span>
+                            </div>
+                        </div>
+                        <div class="listitem">
+                            <div class="listlabel">研究分野：</div>
+                            <div class="listdata" data-im="teachers2016@focus"></div>
+                        </div>
+                        <div class="listitem">
+                            <div class="listlabel">ひとこと：</div>
+                            <div class="listdata" data-im="teachers2016@introduce"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <img src="https://lms.cb.ecloud.nii.ac.jp/portal/images/"
+                             data-im="teachers2016@photofile@#src" class="teacher"/>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+</section>
+<section class="row">
 </section>
 </body>
 </html>
