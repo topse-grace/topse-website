@@ -34,8 +34,15 @@ IM_Entry(
         ),
         array(
             "name" => "subjectlist",
-            "view" => "subject_syllabus",
-            "table" => "dummy",
+            'aggregation-select' => "subject.*, FLOOR(remote_Q1 / 10) AS remote_Q1a, " .
+                "GROUP_CONCAT(DISTINCT CONCAT('<img src=\"../images/s-', specQ5_name.swebok_id,'.png\" class=\"icon\"/>') ORDER BY specQ5_name.swebok_id SEPARATOR '\n') AS spec_Q5_string," .
+                "GROUP_CONCAT(DISTINCT responsible_teacher.teacher_name ORDER BY responsible_teacher.ordering SEPARATOR ', ') AS teachers," .
+                "course.name AS course_name, course.color AS course_color",
+            'aggregation-from' => "subject " .
+                "LEFT OUTER JOIN specQ5_name ON specQ5_name.subject_id=subject.subject_id" .
+                "LEFT OUTER JOIN responsible_teacher on responsible_teacher.subject_id=subject.subject_id" .
+                "INNER JOIN course ON course.course_id=subject.course_id",
+            'aggregation-group-by' => "subject.subject_id",
             "key" => "subject_id",
             "navi-control" => "master-hide",
             "records" => 100,
