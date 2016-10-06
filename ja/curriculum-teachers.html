@@ -16,10 +16,10 @@
     <script src="../lib/pagebuilder-r3.php"></script>
     <script src="../lib/pagebuilder-r3.js"></script>
     <script>
-        function toggleDetail(id)   {
-            var link = document.getElementById("box"+id);
-            var table = document.getElementById("table"+id);
-            if (table.style.display == "none" ) {
+        function toggleDetail(id) {
+            var link = document.getElementById("box" + id);
+            var table = document.getElementById("table" + id);
+            if (table.style.display == "none") {
                 table.style.display = "";
                 link.innerHTML = "閉じる";
             } else {
@@ -47,33 +47,59 @@
             vertical-align: top;
             border: none;
             white-space: nowrap;
+            background-color: white;
         }
+
         .teacher TD {
             text-align: left;
             vertical-align: top;
             border: none;
         }
-        .teacher IMG    {
+
+        .teacher IMG {
             width: 120px;
             margin: 0 20px 0 20px;
         }
-        H3  {
+
+        H3 {
             margin: 14px 0 0 0;
             padding: 0;
             font-size: 14px;
         }
-        .contorollink   {
+
+        .contorollink {
             margin: 0 0 0 22px;
             padding: 0;
             font-size: 12px;
         }
-        .teacher    {
+
+        .teacher {
             margin-left: 22px;
             font-size: 12px;
+            border: none;
         }
-        .affiliation    {
+
+        .affiliation {
             margin: 0 0 0 14px;
             color: dimgray;
+        }
+
+        DIV.listitem {
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: flex-start;
+            align-items: flex-start;
+        }
+
+        DIV.listlabel {
+            min-width: 120px;
+            text-align: right;
+            vertical-align: top;
+        }
+
+        DIV.listdata {
+            text-align: left;
+            vertical-align: top;
         }
 
     </style>
@@ -83,40 +109,43 @@
     <div class="container" style="background-color:#fff">
         <h2>講師一覧（2016年度）</h2>
         <!--<p><a href="https://lms.cb.ecloud.nii.ac.jp/portal/web_teachers28.html" target="_blank">こちらをクリック[別ウインドウに表示]</a>して表示される講師一覧よりご覧ください．-->
-            <!--<br/><br/><br/><br/><br/><br/>-->
+        <!--<br/><br/><br/><br/><br/><br/>-->
         <!--</p>-->
         <div data-im-control="enclosure">
             <div data-im-control="repeater">
                 <h3>
-                    <span data-im="teachers2016@teacher_name"></span>
+                    <span data-im="teachers2016@teacher_name" style="font-weight: bold;"></span>
                     <span class="affiliation" data-im="teachers2016@affiliation"></span>
                 </h3>
                 <div class="contorollink">
                     <a href="javascript:toggleDetail($)" id="box"
                        data-im="teachers2016@teacher_id@$href teachers2016@teacher_id@#id">プロフィール</a>
                 </div>
-                <table class="teacher" id="table" data-im="teachers2016@teacher_id@#id" style="display: none;">
-                    <tr data-im-control="ignore_enc_rep">
-                        <th>担当講義：</th>
-                        <td data-im="teachers2016@subjects"></td>
-                        <td rowspan="4">
-                            <img src="https://lms.cb.ecloud.nii.ac.jp/portal/images/"
-                                 data-im="teachers2016@photofile@#src"/>
-                        </td>
-                    </tr>
-                    <tr data-im-control="ignore_enc_rep">
-                        <th>所属・役職：</th><td>
-                        <span data-im="teachers2016@affiliation"></span>
-                        <span data-im="teachers2016@title"></span>
-                    </td>
-                    </tr>
-                    <tr data-im-control="ignore_enc_rep">
-                        <th>研究分野：</th><td data-im="teachers2016@focus"></td>
-                    </tr>
-                    <tr data-im-control="ignore_enc_rep">
-                        <th>ひとこと：</th><td data-im="teachers2016@introduce"></td>
-                    </tr>
-                </table>
+                <div id="table" data-im="teachers2016@teacher_id@#id" style="display:flex;">
+                    <div style="float: right">
+                        <img src="https://lms.cb.ecloud.nii.ac.jp/portal/images/"
+                             data-im="teachers2016@photofile@#src"/>
+                    </div>
+                    <div class="listitem">
+                        <div class="listlabel">担当講義：</div>
+                        <div class="listdata" data-im="teachers2016@subjects"></div>
+                    </div>
+                    <div class="listitem">
+                        <div class="listlabel">所属・役職：</div>
+                        <div class="listdata">
+                            <span data-im="teachers2016@affiliation"></span>
+                            <span data-im="teachers2016@title"></span>
+                        </div>
+                    </div>
+                    <div class="listitem">
+                        <div class="listlabel">研究分野：</div>
+                        <div  class="listdata"data-im="teachers2016@focus"></div>
+                    </div>
+                    <div class="listitem">
+                        <div class="listlabel">ひとこと：</div>
+                        <div  class="listdata"data-im="teachers2016@introduce"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
