@@ -20,7 +20,7 @@
             var link = document.getElementById("box" + id);
             var table = document.getElementById("table" + id);
             if (table.style.display == "none") {
-                table.style.display = "";
+                table.style.display = "flex";
                 link.innerHTML = "閉じる";
             } else {
                 table.style.display = "none";
@@ -84,22 +84,29 @@
             color: dimgray;
         }
 
-        DIV.listitem {
+        DIV.itemtable {
             display: flex;
             flex-wrap: nowrap;
             justify-content: flex-start;
             align-items: flex-start;
+            flex-direction:row;
+        }
+
+        DIV.listitem {
         }
 
         DIV.listlabel {
             min-width: 120px;
+            max-width: 120px;
             text-align: right;
             vertical-align: top;
+            font-size: 12pt;
         }
 
         DIV.listdata {
             text-align: left;
             vertical-align: top;
+            font-size: 12pt;
         }
 
     </style>
@@ -121,8 +128,8 @@
                     <a href="javascript:toggleDetail($)" id="box"
                        data-im="teachers2016@teacher_id@$href teachers2016@teacher_id@#id">プロフィール</a>
                 </div>
-                <div id="table" data-im="teachers2016@teacher_id@#id" style="display:flex;">
-                    <div style="display:flex;flex-direction:row;">
+                <div id="table" data-im="teachers2016@teacher_id@#id" style="display:none;">
+                    <div class="itemtable">
                         <div class="listitem">
                             <div class="listlabel">担当講義：</div>
                             <div class="listdata" data-im="teachers2016@subjects"></div>
