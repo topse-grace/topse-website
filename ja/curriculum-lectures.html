@@ -49,6 +49,7 @@
         .label {
             font-weight: bold;
             color: #555555;
+            font-size: 10pt;
         }
 
         table td {
@@ -57,8 +58,8 @@
             border: none;
         }
 
-        table td {
-            text-align: left;
+        table th {
+            text-align: center;
             vertical-align: middle;
             border: none;
         }
@@ -192,30 +193,32 @@
     <div class="container">
         <h2>コース・講義一覧（2016年度）</h2>
         <hr>
-        <table style="border-collapse:collapse;">
+        <table style="border-collapse:collapse;border:none">
             <thead>
             <tr>
-                <th width="60" class="bottom_boldline" style="line-height: 100%;">
+                <th width="60" class="bottom_boldline" style="line-height: 100%;text-align: center;">
                     <span style="cursor: pointer" data-im="_@addorder:subjectlist:semester:asc">開催<br>時期</span>
                 </th>
-                <th width="95" class="bottom_boldline">
+                <th width="95" class="bottom_boldline" style="text-align: center;">
                     <span style="cursor: pointer" data-im="_@addorder:subjectlist:course_name:asc">コース</span>
                 </th>
-                <th width="420" class="bottom_boldline">
+                <th width="420" class="bottom_boldline" style="text-align: center;">
                     <span style="cursor: pointer" data-im="_@addorder:subjectlist:name:asc">講義名（アイコンは遠隔対応）</span>
                 </th>
-                <th width="160" class="bottom_boldline" style="background-color: #e5e5e5">講義の傾向</th>
-                <th class="bottom_boldline">講義概要/SWEBOK</th>
+                <th width="160" class="bottom_boldline" style="background-color: #e5e5e5;text-align: center;">
+                    講義の傾向
+                </th>
+                <th class="bottom_boldline" style="text-align: center;">講義概要/SWEBOK</th>
             </tr>
             </thead>
             <tbody>
             <tr>
-                <td style="text-align: center;">
-                    <span style="font-size: 12pt;background-color:#cacaca;border-radius: 10px;padding: 6px"
+                <td style="text-align: center;white-space: nowrap;">
+                    <span style="font-size: 10px;background-color:#cacaca;border-radius: 10px;padding: 6px"
                           data-im="subjectlist@semester_string"></span>
                 </td>
-                <td style="text-align: center;line-height: 11px">
-                    <span style="font-size: 12pt;" data-im="subjectlist@course_name"></span>
+                <td style="text-align: center;white-space: nowrap;">
+                    <span style="font-size: 10px;" data-im="subjectlist@course_name"></span>
                 </td>
                 <td style="padding: 4px;" data-im="subjectlist@course_color@style.backgroundColor">
                     <img src="../images/R-$.png" data-im="subjectlist@remote_Q1a@$src"
@@ -241,7 +244,7 @@
                 <td colspan="2" style="text-align:center;" class="bottom_line">
                     <span style="display:none;" class="codenode" data-im="subjectlist@subject_id"></span>
                 </td>
-                <td style="font-size: 12pt;padding-left: 20px;" class="bottom_line">
+                <td style="font-size: 10pt;padding-left: 14px;" class="bottom_line">
                     <span class="label">担当講師：</span>
                     <span data-im="subjectlist@teachers"></span>
                 </td>
