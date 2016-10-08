@@ -211,7 +211,17 @@ IM_Entry(
             ),
             "db-class" => "PDO",
         ),
-
+        array(
+            "name" => "course_master",
+            "view" => "course",
+            "table" => "dummy",
+            "cache" => true,
+            "key" => "course_id",
+            "relation" => array(
+                array("foreign-key" => "course_id", "join-field" => "course_id", "operator" => "="),
+            ),
+            "db-class" => "PDO",
+        ),
     ),
     array(
         'formatter' => array(
