@@ -68,7 +68,7 @@
             flex-wrap: nowrap;
             justify-content: flex-start;
             align-items: flex-start;
-            flex-direction:column;
+            flex-direction: column;
         }
 
         DIV.listitem {
@@ -76,7 +76,7 @@
             flex-wrap: nowrap;
             justify-content: flex-start;
             align-items: flex-start;
-            flex-direction:row;
+            flex-direction: row;
         }
 
         DIV.listlabel {
@@ -98,7 +98,20 @@
     </style>
 </head>
 <body style="padding-top:0px;">
-<section class="row">
+<div id="nonsupport" style="background-color:black">
+    <div style="text-align:center;color:yellow">
+        If you see this, (1)the page is generating now, or (2)your browser has any issues.
+        In case of (1), the page is going to show just for a while.
+        If you see this in a long period, it might be (2) and you must use any supported web browser with Javascript
+        enabled.
+    </div>
+    <div style="text-align:center;color:yellow">
+        この表示が見えている場合、(1)ページ生成中であるか、(2)Webブラウザーに問題があります。
+        (1)の場合はしらばく待つとページが表示されます。長時間表示されていれば(2)の可能性が高く、
+        その場合は対応ブラウザーを使用しJavaScriptを有効にした上でお使い下さい。
+    </div>
+</div>
+<section class="row" style="display:none;">
     <div class="container" style="background-color:#fff">
         <h2>講師一覧（2016年度）</h2>
         <hr>
