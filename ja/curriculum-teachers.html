@@ -111,57 +111,55 @@
         その場合は対応ブラウザーを使用しJavaScriptを有効にした上でお使い下さい。
     </div>
 </div>
-<div id="container" style="display: none">
-    <section class="row">
-        <div class="container" style="background-color:#fff">
-            <h2>講師一覧（2016年度）</h2>
-            <hr>
-            <!--<p><a href="https://lms.cb.ecloud.nii.ac.jp/portal/web_teachers28.html" target="_blank">こちらをクリック[別ウインドウに表示]</a>して表示される講師一覧よりご覧ください．-->
-            <!--<br/><br/><br/><br/><br/><br/>-->
-            <!--</p>-->
-            <div data-im-control="enclosure">
-                <div data-im-control="repeater">
-                    <h3>
-                        <span data-im="teachers2016@teacher_name" style="font-weight: bold;"></span>
-                        <span class="affiliation" data-im="teachers2016@affiliation"></span>
-                    </h3>
-                    <div class="contorollink">
-                        <a href="javascript:toggleDetail($)" id="box"
-                           data-im="teachers2016@teacher_id@$href teachers2016@teacher_id@#id">プロフィール</a>
+<section class="row" style="display:none;">
+    <div class="container" style="background-color:#fff">
+        <h2>講師一覧（2016年度）</h2>
+        <hr>
+        <!--<p><a href="https://lms.cb.ecloud.nii.ac.jp/portal/web_teachers28.html" target="_blank">こちらをクリック[別ウインドウに表示]</a>して表示される講師一覧よりご覧ください．-->
+        <!--<br/><br/><br/><br/><br/><br/>-->
+        <!--</p>-->
+        <div data-im-control="enclosure">
+            <div data-im-control="repeater">
+                <h3>
+                    <span data-im="teachers2016@teacher_name" style="font-weight: bold;"></span>
+                    <span class="affiliation" data-im="teachers2016@affiliation"></span>
+                </h3>
+                <div class="contorollink">
+                    <a href="javascript:toggleDetail($)" id="box"
+                       data-im="teachers2016@teacher_id@$href teachers2016@teacher_id@#id">プロフィール</a>
+                </div>
+                <div id="table" data-im="teachers2016@teacher_id@#id" style="display:none;">
+                    <div class="itemtable">
+                        <div class="listitem">
+                            <div class="listlabel">担当講義：</div>
+                            <div class="listdata" data-im="teachers2016@subjects"></div>
+                        </div>
+                        <div class="listitem">
+                            <div class="listlabel">所属・役職：</div>
+                            <div class="listdata">
+                                <span data-im="teachers2016@affiliation"></span>
+                                <span data-im="teachers2016@title"></span>
+                            </div>
+                        </div>
+                        <div class="listitem">
+                            <div class="listlabel">研究分野：</div>
+                            <div class="listdata" data-im="teachers2016@focus"></div>
+                        </div>
+                        <div class="listitem">
+                            <div class="listlabel">ひとこと：</div>
+                            <div class="listdata" data-im="teachers2016@introduce"></div>
+                        </div>
                     </div>
-                    <div id="table" data-im="teachers2016@teacher_id@#id" style="display:none;">
-                        <div class="itemtable">
-                            <div class="listitem">
-                                <div class="listlabel">担当講義：</div>
-                                <div class="listdata" data-im="teachers2016@subjects"></div>
-                            </div>
-                            <div class="listitem">
-                                <div class="listlabel">所属・役職：</div>
-                                <div class="listdata">
-                                    <span data-im="teachers2016@affiliation"></span>
-                                    <span data-im="teachers2016@title"></span>
-                                </div>
-                            </div>
-                            <div class="listitem">
-                                <div class="listlabel">研究分野：</div>
-                                <div class="listdata" data-im="teachers2016@focus"></div>
-                            </div>
-                            <div class="listitem">
-                                <div class="listlabel">ひとこと：</div>
-                                <div class="listdata" data-im="teachers2016@introduce"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <img src="https://lms.cb.ecloud.nii.ac.jp/portal/images/"
-                                 data-im="teachers2016@photofile@#src" class="teacher"/>
-                        </div>
+                    <div>
+                        <img src="https://lms.cb.ecloud.nii.ac.jp/portal/images/"
+                             data-im="teachers2016@photofile@#src" class="teacher"/>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <section class="row">
-    </section>
-</div>
+    </div>
+</section>
+<section class="row">
+</section>
 </body>
 </html>
