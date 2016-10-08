@@ -186,6 +186,10 @@
             font-size: 13pt;
         }
 
+        table.syllabushead th   {
+            text-align: right;
+        }
+
     </style>
 </head>
 <body>
@@ -316,20 +320,7 @@
             <!-- Detail Part: Show the syllabus data for each subject. -->
             <div class="syllabus_body" data-im-control="enclosure">
                 <div data-im-control="repeater">
-                    <span class="label">シリーズ:</span>
-                    <span data-im-control="enclosure">
-                        <span data-im-control="repeater">
-                            <span data-im="course_master@name"></span>
-                        </span>
-                    </span>
-                    <span class="label">実施年度:</span>
-                    <span data-im="subjectdetail@executed_year"></span>
-                    <span class="label">実施学期:</span>
-                    <span data-im="subjectdetail@semester_string"></span>
-                    <span class="label">講義回数:</span>
-                    <span data-im="subjectdetail@times"></span>
-
-                    <table>
+                    <table class="syllabushead">
                         <tr data-im-control="ignore_enc_rep">
                             <th>
                                 <h3>
@@ -338,8 +329,14 @@
                                     </span>
                                 </h3>
                             </th>
+                            <td data-im="subjectdetail@name" style="font-size: 140%; font-weight: bold"></td>
+                            <th>シリーズ</th>
                             <td>
-                                <span data-im="subjectdetail@name"></span>
+                                <span data-im-control="enclosure">
+                                <span data-im-control="repeater">
+                                    <span data-im="course_master@name"></span>
+                                </span>
+                                </span>
                             </td>
                         </tr>
                         <tr data-im-control="ignore_enc_rep">
@@ -363,6 +360,13 @@
                                     <span data-im-control="separator">, </span>
                                 </span>
                             </td>
+                            <td colspan="2">
+                                <span data-im="subjectdetail@executed_year"></span>年度
+                                <span data-im="subjectdetail@semester_string"></span>開催，
+                                <span class="label">講義回数:</span>
+                                <span data-im="subjectdetail@times"></span>
+                            </td>
+                        </tr>
                     </table>
                     <div data-im="subjectdetail@style_purpose@style.display">
                         <h3>
