@@ -48,6 +48,7 @@ IM_Entry(
             "records" => 100,
             "query" => array(
                 array("field" => "executed_year", "operator" => "=", "value" => 28),
+                array("field" => "invisible", "operator" => "<", "value" => 1),
             ),
             "sort" => array(
                 array("field" => "executed_year", "direction" => "desc"),

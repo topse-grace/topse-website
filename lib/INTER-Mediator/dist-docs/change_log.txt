@@ -10,8 +10,8 @@ Please check: https://github.com/INTER-Mediator/INTER-Mediator
 Also the Migration Guide (Japanese) might be informative:
   http://inter-mediator.info/ja/for-developers/migration.html
 
-Ver.5.5 (in development)
-- Support PHP 7 and cheking on 7.1RC2 too.
+Ver.5.5 (October 13, 2016)
+- Support PHP 7 and checking on 7.1.0 Release Candidate 2, too.
 - Add "phpseclib_v2" (phpseclib 2.0.3) in "lib" directory for supporting PHP 7.
 - Add "Constant-Time Encoding" in "lib" directory for phpseclib 2.0.
   <https://github.com/paragonie/constant_time_encoding>
@@ -50,6 +50,8 @@ Ver.5.5 (in development)
 - [BUG FIX] On the MediaAccess class, the authorization for “all” operation didn’t apply.
 - [BUG FIX] Fix the "undefined" copy button in pagination control.
 - [BUG FIX] Fix customized button names in pagination control.
+- [BUG FIX] Textarea on Edge showed in single line in spite of the multiple line string. With this
+  fix, IM uses value property of textarea node to set the value.
 
 Ver.5.4 (August 24, 2016)
 - You don't have to call INTERMediator.construct() anymore. If you want to do anything before page
