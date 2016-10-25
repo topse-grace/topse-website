@@ -158,28 +158,30 @@ h2 {
 }
 
 h3 {
-    margin: .83em 0;
+    margin: 1.4em 0  .83em 0;
     font-size: 1.4em;
     line-height: 1.3
 }
 
 h4 {
-    margin: .83em 0;
+    margin: 1.7em 0  .3em 0;
     font-size: 1.2em;
-    line-height: 1.3
+    line-height: 1.3;
 }
-
+h5	{
+	margin-bottom: 0;
+}
 h5:before {
     content: "Q. ";
     color: #81B33A;
     font-weight: bold;
-    font-size: 1.2em;
+    font-size: 1.3em;
 }
 
 p {
     margin: 1em 0;
     font-size: 1em;
-    line-height: 1.7
+    line-height: 1.7;
 }
 
 /* Classes
