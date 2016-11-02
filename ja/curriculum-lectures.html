@@ -12,8 +12,10 @@
     <link rel="stylesheet" href="../lib/css/style.css" media="screen">
     <link type="text/css" rel="stylesheet" href="../lib/INTER-Mediator/themes/default/css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="../lib/js/bootstrap.min.js"></script>
+    <script src="../lib/pagebuilder-r3.php"></script>
     <script>
-        function appendDoAfterConstruct() {
+         INTERMediatorOnPage.appendDoAfterConstruct = function() {
             var params = INTERMediatorOnPage.getURLParametersAsArray();
             if (params['c'] && !INTERMediator.partialConstructing) {
                 var context = IMLibContextPool.contextFromName('subjectlist');
@@ -23,8 +25,6 @@
             }
         }
     </script>
-    <script src="../lib/js/bootstrap.min.js"></script>
-    <script src="../lib/pagebuilder-r3.php"></script>
     <script src="../lib/pagebuilder-r3.js"></script>
     <style>
         .submenu-curriculum {
