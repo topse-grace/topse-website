@@ -15,6 +15,17 @@
     <script src="../lib/js/bootstrap.min.js"></script>
     <script src="../lib/pagebuilder-r3.php"></script>
     <script src="../lib/pagebuilder-r3.js"></script>
+    <script>
+        function appendDoAfterConstruct() {
+            var params = INTERMediatorOnPage.getURLParametersAsArray();
+            if (params['c'] && !INTERMediator.partialConstructing) {
+                var context = IMLibContextPool.contextFromName('subject');
+                var key = 'subject_id=' + params['id'];
+                var buttonId = context.store[key]['_im_button_master_id'];
+                document.getElementById(buttonId).click();
+            }
+        }
+    </script>
     <style>
         .submenu-curriculum {
             display: block;
