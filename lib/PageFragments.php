@@ -19,13 +19,15 @@ class PageFragments extends DB_UseSharedObjects
             $lang = 'en';
         }
         if ($dataSourceName == "pagebuilder") {
-            return array(
-                array(
-                    "pagenavigation" => $this->fileContents("{$lang}/pagenavigation.html"),
-                    "pageheader" => $this->fileContents("{$lang}/pageheader.html"),
-                    "pagefooter" => $this->fileContents("{$lang}/pagefooter.html")
-                )
+            $apending = array(
+                "pagenavigation" => $this->fileContents("{$lang}/pagenavigation.html"),
+                "pageheader" => $this->fileContents("{$lang}/pageheader.html"),
+                "pagefooter" => $this->fileContents("{$lang}/pagefooter.html")
             );
+//            $this->dbClass->setUpdatedRecord("pagenavigation", $apending["pagenavigation"]);
+//            $this->dbClass->setUpdatedRecord("pageheader", $apending["pageheader"]);
+//            $this->dbClass->setUpdatedRecord("pagefooter", $apending["pagefooter"]);
+            return array($apending);
         } else if ($dataSourceName == "newslist") {
             $this->resultCount = 0;
             $newsList = array();
