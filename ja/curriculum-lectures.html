@@ -19,7 +19,7 @@
         function appendDoAfterConstruct() {
             var params = INTERMediatorOnPage.getURLParametersAsArray();
             if (params['c'] && !INTERMediator.partialConstructing) {
-                var context = IMLibContextPool.contextFromName('subject');
+                var context = IMLibContextPool.contextFromName('subjectlist');
                 var key = 'subject_id=' + params['id'];
                 var buttonId = context.store[key]['_im_button_master_id'];
                 document.getElementById(buttonId).click();
