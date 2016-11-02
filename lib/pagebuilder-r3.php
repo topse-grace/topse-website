@@ -309,7 +309,7 @@ IM_Entry(
     array(
         'db-class' => 'Null',
     ),
-    false
+    2
 );
 
 ?>
