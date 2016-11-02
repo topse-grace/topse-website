@@ -27,6 +27,21 @@
         .submenu-admission {
             display: none;
         }
+
+        .absolute {
+            font-size: 12px;
+            line-height: 16px;
+            position: absolute;
+            width: 119px;
+            height: 39px;
+            border: 1px solid black;
+            background-color: #c3c3c3;
+            text-align: center;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -34,8 +49,27 @@
     <div class="container">
         <h2>時間割（2016年度）</h2>
         <p>2016年度の時間割は以下の通りです．</p>
-        <p><a href="../images/timetable2016.jpg"><img class="alignleft size-full wp-image-6127" title="timetable2015"
-                                                      src="../images/timetable2016.jpg" alt=""/></a></p>
+        <!--<p><a href="../images/timetable2016.jpg"><img class="alignleft size-full wp-image-6127" title="timetable2015"-->
+        <!--src="../images/timetable2016.jpg" alt=""/></a></p>-->
+        <div data-im-control="enclosure" style="position:relative;display:block;height:480px">
+            <div class="absolute" style="left: 0; top:0">時間割</div>
+            <div class="absolute" style="left: 120px; top:0">月</div>
+            <div class="absolute" style="left: 240px; top:0">火</div>
+            <div class="absolute" style="left: 360px; top:0">水</div>
+            <div class="absolute" style="left: 480px; top:0">木</div>
+            <div class="absolute" style="left: 600px; top:0">金</div>
+            <div class="absolute" style="left: 720px; top:0; width: 240px">土</div>
+            <div class="absolute" style="left: 0; top:40px">開講前</div>
+            <div class="absolute" style="left: 0; top:80px; height: 80px">1学期<br>(4-5月)</div>
+            <div class="absolute" style="left: 0; top:160px; height: 80px">2学期<br>(6-7月)</div>
+            <div class="absolute" style="left: 0; top:240px">夏期集中<br>(8月)</div>
+            <div class="absolute" style="left: 0; top:280px; height: 80px">3学期<br>(9-10月)</div>
+            <div class="absolute" style="left: 0; top:360px; height: 80px">4学期<br>(11-1月)</div>
+            <div class="absolute" style="left: 0; top:440px">冬季集中<br>(1月)</div>
+            <div class="absolute" data-im-control="repeater" onclick="showSyllabus($)"
+                 data-im="subject@name subject@pos_x@style.left subject@pos_y@style.top subject@h@style.height
+             subject@color@style.backgroundColor subject@subject_id@$onclick"></div>
+        </div>
         <p>【講義時間】 平日: 18:20〜19:50，20:00〜21:30<br/>　　　　　　　 土曜，集中: 講義により異なります．<br/> (例) 10:30-12:00, 13:00-14:30,
             14:45-16:15, 16:30-18:00</p>
         <p>1日単位の詳細な時間割 (2016年度) は， <a href="../images/timetable20160915.pdf">こちらからダウンロード</a>できます．</p>
