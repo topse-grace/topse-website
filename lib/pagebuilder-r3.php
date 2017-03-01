@@ -136,10 +136,11 @@ IM_Entry(
             "sort" => array(array("field" => "subject_id", "direction" => "asc")),
             "calculation" => array(
                 array(
-                    "field" => "semester_string",
-                    "expression" => "if(semester=0,'前期',if(semester= 1.0,'1学期',if(semester=2.0,'2学期',
-                        if(semester=2.5,'夏学期',if(semester=3.0,'3学期',
-                        if(semester=4.0,'4学期',if(semester=5.0,'冬学期','')))))))"),
+                    "field" => "m_pos_string",
+                    "expression" => "choice(m_pos,4,5,6,7,8,9,10,11,12,1,2)"),
+                array(
+                    "field" => "info_string",
+                    "expression" => "if(advance=1,'応用','基礎')+if(alternate=1,', 隔年','')"),
                 array(
                     "field" => "Q1_string",
                     "expression" => "if(spec_Q1=1,'基礎',if(spec_Q1=2,'応用','その他'))"
