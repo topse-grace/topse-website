@@ -15,7 +15,7 @@
     <script src="../lib/js/bootstrap.min.js"></script>
     <script src="../lib/pagebuilder-r3.php"></script>
     <script>
-         INTERMediatorOnPage.appendDoAfterConstruct = function() {
+        INTERMediatorOnPage.appendDoAfterConstruct = function () {
             var params = INTERMediatorOnPage.getURLParametersAsArray();
             if (params['c'] && !INTERMediator.partialConstructing) {
                 var context = IMLibContextPool.contextFromName('subjectlist');
@@ -213,9 +213,10 @@
         table.syllabushead th h3 {
             margin: 0;
         }
-        .startBox   {
+
+        .startBox {
             font-size: 70%;
-            background-color:#cacaca;
+            background-color: #cacaca;
             border-radius: 10px;
             padding: 0;
             text-align: center;
