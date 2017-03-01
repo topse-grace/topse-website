@@ -198,7 +198,7 @@ IM_Entry(
             "db-class" => "PDO",
         ),
         array(
-            "name" => "teacherlist",
+            "name" => "teachername",
             "view" => "teacher",
             "table" => "nothing_at_all",
             "key" => "teacher_id",
