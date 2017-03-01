@@ -47,13 +47,16 @@ IM_Entry(
             "navi-control" => "master-hide",
             "records" => 100,
             "query" => array(
-                array("field" => "executed_year", "operator" => "=", "value" => 28),
+                array("field" => "executed_year", "operator" => "=", "value" => 29),
                 array("field" => "invisible", "operator" => "<", "value" => 1),
+                array("field" => "seminar", "operator" => "<", "value" => 1),
+                array("field" => "contest", "operator" => "<", "value" => 1),
             ),
             "sort" => array(
                 array("field" => "executed_year", "direction" => "desc"),
+                array("field" => "m_pos", "direction" => "asc"),
+                array("field" => "wday_pos", "direction" => "asc"),
                 array("field" => "semester", "direction" => "asc"),
-                array("field" => "summary_wday", "direction" => "asc"),
             ),
             "button-names" => array(
                 "navi-detail" => "シラバス 表示",
