@@ -20,12 +20,12 @@ IM_Entry(
             'extending-class' => "PageFragments",
         ),
         array(
-            "name" => "teachers2016",
+            "name" => "teacherlist",
             'aggregation-select' => "responsible.teacher_id, executed_year, teacher.name AS teacher_name, GROUP_CONCAT(subject.name) AS subjects, affiliation, title, photofile, focus, introduce",
             'aggregation-from' => "responsible INNER JOIN subject ON subject.subject_id = responsible.subject_id INNER JOIN teacher ON teacher.teacher_id = responsible.teacher_id",
             'aggregation-group-by' => "responsible.teacher_id",
             "query" => array(
-                array("field" => "executed_year", "operator" => "=", "value" => "28"),
+                array("field" => "executed_year", "operator" => "=", "value" => "29"),
             ),
             "sort" => array(
                 array("field" => "name_kana", "direction" => "asc"),
@@ -231,8 +231,10 @@ IM_Entry(
             "key" => "subject_id",
             "records" => 100,
             "query" => array(
-                array("field" => "executed_year", "operator" => "=", "value" => 28),
-                array("field" => "invisible", "operator" => "<", "value" => 1),
+                array("field" => "executed_year", "operator" => "=", "value" => 29),
+                array("field" => "invisible", "operator" => "=", "value" => 0),
+                array("field" => "seminar", "operator" => "=", "value" => 0),
+                array("field" => "contest", "operator" => "=", "value" => 0),
             ),
             "calculation" => array(
                 array("field" => "pos_x", "expression" => "((wday_pos-2)*110+65+if(intensive=1,60,0)) + 'px'"),
