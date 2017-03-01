@@ -213,6 +213,14 @@
         table.syllabushead th h3 {
             margin: 0;
         }
+        .startBox   {
+            font-size: 70%;
+            background-color:#cacaca;
+            border-radius: 10px;
+            padding: 0;
+            text-align: center;
+            margin: 0;
+        }
 
     </style>
 </head>
@@ -260,9 +268,9 @@
             </thead>
             <tbody>
             <tr>
-                <td style="white-space:nowrap;text-align:center;">
-                    <span style="background-color:#cacaca;border-radius: 10px;padding: 6px"
-                          data-im="subjectlist@semester_string"></span>
+                <td style="text-align: center;">
+                    <div class="startBox"
+                         data-im="subjectlist@start_string@innerHTML"></div>
                 </td>
                 <td>
                     <span data-im="subjectlist@course_name"></span>
