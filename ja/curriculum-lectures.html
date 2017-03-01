@@ -15,7 +15,7 @@
     <script src="../lib/js/bootstrap.min.js"></script>
     <script src="../lib/pagebuilder-r3.php"></script>
     <script>
-         INTERMediatorOnPage.appendDoAfterConstruct = function() {
+        INTERMediatorOnPage.appendDoAfterConstruct = function () {
             var params = INTERMediatorOnPage.getURLParametersAsArray();
             if (params['c'] && !INTERMediator.partialConstructing) {
                 var context = IMLibContextPool.contextFromName('subjectlist');
@@ -214,6 +214,15 @@
             margin: 0;
         }
 
+        .startBox {
+            font-size: 70%;
+            background-color: #cacaca;
+            border-radius: 10px;
+            padding: 0;
+            text-align: center;
+            margin: 0;
+        }
+
     </style>
 </head>
 <body>
@@ -232,7 +241,7 @@
 </div>
 <section class="row" style="display:none">
     <div class="container">
-        <h2>コース・講義一覧（2016年度）</h2>
+        <h2>コース・講義一覧（2017年度）</h2>
         <hr>
         <table style="border-collapse:collapse;border:none">
             <thead>
@@ -260,9 +269,9 @@
             </thead>
             <tbody>
             <tr>
-                <td style="white-space:nowrap;text-align:center;">
-                    <span style="background-color:#cacaca;border-radius: 10px;padding: 6px"
-                          data-im="subjectlist@semester_string"></span>
+                <td style="text-align: center;">
+                    <div class="startBox"
+                         data-im="subjectlist@start_string@innerHTML"></div>
                 </td>
                 <td>
                     <span data-im="subjectlist@course_name"></span>
@@ -379,7 +388,7 @@
                                         <span data-im="responsiblelist@teacher_id" style="display:none"></span>
                                         <span data-im-control="enclosure">
                                             <span data-im-control="repeater">
-                                                <span data-im="teacherlist@name"></span>
+                                                <span data-im="teachername@name"></span>
                                             </span>
                                         </span>
                                     </span>

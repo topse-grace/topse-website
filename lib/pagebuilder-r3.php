@@ -34,10 +34,13 @@ IM_Entry(
         ),
         array(
             "name" => "subjectlist",
+            "db-class" => "PDO",
             'aggregation-select' => "subject.*, FLOOR(remote_Q1 / 10) AS remote_Q1a, " .
                 "GROUP_CONCAT(DISTINCT CONCAT('<img src=\"../images/s-', specQ5_name.swebok_id,'.png\" class=\"icon\"/>') ORDER BY specQ5_name.swebok_id SEPARATOR '\n') AS spec_Q5_string," .
                 "GROUP_CONCAT(DISTINCT responsible_teacher.teacher_name ORDER BY responsible_teacher.ordering SEPARATOR ', ') AS teachers," .
-                "course.name AS course_name, course.color AS course_color",
+                "course.name AS course_name, course.color AS course_color, executed_year, m_pos, wday_pos," .
+                "CONCAT('平成',executed_year,'年<br>',IF(executed_year=29,CONCAT(MOD(m_pos+3,12)+1,'月'),''),'開講') AS start_string,".
+                "executed_year * 1000 + m_pos *10 + wday_pos AS sortkey",
             'aggregation-from' => "subject " .
                 "LEFT OUTER JOIN specQ5_name ON specQ5_name.subject_id=subject.subject_id " .
                 "LEFT OUTER JOIN responsible_teacher on responsible_teacher.subject_id=subject.subject_id " .
@@ -47,24 +50,20 @@ IM_Entry(
             "navi-control" => "master-hide",
             "records" => 100,
             "query" => array(
-                array("field" => "executed_year", "operator" => "=", "value" => 28),
-                array("field" => "invisible", "operator" => "<", "value" => 1),
+                array("field" => "executed_year", "operator" => ">=", "value" => 29),
+                array("field" => "seminar", "operator" => "=", "value" => "0"),
+                array("field" => "invisible", "operator" => "=", "value" => "0"),
             ),
             "sort" => array(
-                array("field" => "executed_year", "direction" => "desc"),
+                array("field" => "executed_year", "direction" => "asc"),
+                array("field" => "m_pos", "direction" => "asc"),
+                array("field" => "wday_pos", "direction" => "asc"),
                 array("field" => "semester", "direction" => "asc"),
-                array("field" => "summary_wday", "direction" => "asc"),
             ),
             "button-names" => array(
                 "navi-detail" => "シラバス 表示",
             ),
             "calculation" => array(
-                array(
-                    "field" => "semester_string",
-                    "expression" => "if(semester=0,'前期',if(semester= 1.0,'1学期',if(semester=2.0,'2学期',
-                        if(semester=2.5,'夏学期',if(semester=3.0,'3学期',
-                        if(semester=4.0,'4学期',if(semester=5.0,'冬学期','')))))))"
-                ),
                 array(
                     "field" => "spec_Q1_string",
                     "expression" => "if(spec_Q1=1,'[基礎]',if(spec_Q1=2,'[応用]',spec_Q1_other))",
@@ -126,7 +125,6 @@ IM_Entry(
                     "expression" => "if(spec_Q4_6=1,'inline','none')",
                 ),
             ),
-            "db-class" => "PDO",
         ),
         array(
             "name" => "subjectdetail",
@@ -200,7 +198,7 @@ IM_Entry(
             "db-class" => "PDO",
         ),
         array(
-            "name" => "teacherlist",
+            "name" => "teachername",
             "view" => "teacher",
             "table" => "nothing_at_all",
             "key" => "teacher_id",
@@ -232,14 +230,29 @@ IM_Entry(
             "records" => 100,
             "query" => array(
                 array("field" => "executed_year", "operator" => "=", "value" => 29),
-                array("field" => "invisible", "operator" => "=", "value" => 0),
-                array("field" => "seminar", "operator" => "=", "value" => 0),
-                array("field" => "contest", "operator" => "=", "value" => 0),
+                array("field" => "invisible", "operator" => "=", "value" => "0"),
+                array("field" => "seminar", "operator" => "=", "value" => "0"),
+                array("field" => "contest", "operator" => "=", "value" => "0"),
             ),
             "calculation" => array(
                 array("field" => "pos_x", "expression" => "((wday_pos-2)*110+65+if(intensive=1,60,0)) + 'px'"),
                 array("field" => "pos_y", "expression" => "((m_pos+1)*40+if(intensive=1,4,0)) + 'px'",),
                 array("field" => "h", "expression" => "(m_height*40-1-if(intensive=1,8,0)) + 'px'",),
+            ),
+            "db-class" => "PDO",
+        ),
+        array(
+            "name" => "subject2018",
+            'aggregation-select' => "s.subject_id, s.name, s.wday_pos, s.m_pos, s.m_height, s.intensive, course.color",
+            'aggregation-from' => "subject AS s INNER JOIN course ON course.course_id=s.course_id",
+            //'aggregation-group-by' => "subject.subject_id",
+            "key" => "subject_id",
+            "records" => 100,
+            "query" => array(
+                array("field" => "executed_year", "operator" => "=", "value" => 30),
+                array("field" => "seminar", "operator" => "=", "value" => "0"),
+                array("field" => "contest", "operator" => "=", "value" => "0"),
+                array("field" => "invisible", "operator" => "=", "value" => "0"),
             ),
             "db-class" => "PDO",
         ),
@@ -313,5 +326,3 @@ IM_Entry(
     ),
     false
 );
-
-?>
