@@ -36,7 +36,7 @@ IM_Entry(
             "name" => "subjectlist",
             "db-class" => "PDO",
             'aggregation-select' => "subject.*, FLOOR(remote_Q1 / 10) AS remote_Q1a, " .
-                "GROUP_CONCAT(DISTINCT CONCAT('<img src=\"images/s-', specQ5_name.swebok_id,'.png\" class=\"icon\"/>') ORDER BY specQ5_name.swebok_id SEPARATOR '\n') AS spec_Q5_string," .
+                "GROUP_CONCAT(DISTINCT CONCAT('<img src=\"../images/s-', specQ5_name.swebok_id,'.png\" class=\"icon\"/>') ORDER BY specQ5_name.swebok_id SEPARATOR '\n') AS spec_Q5_string," .
                 "GROUP_CONCAT(DISTINCT responsible_teacher.teacher_name ORDER BY responsible_teacher.ordering SEPARATOR ', ') AS teachers," .
                 "course.name AS course_name, course.color AS course_color, executed_year, m_pos, wday_pos," .
                 "CONCAT('平成',executed_year,'年<br>',IF(executed_year=29,CONCAT(MOD(m_pos+3,12)+1,'月'),''),'開講') AS start_string,".
