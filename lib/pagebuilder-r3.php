@@ -65,6 +65,9 @@ IM_Entry(
             ),
             "calculation" => array(
                 array(
+                    "field" => "info_string",
+                    "expression" => "if(advance=1,'応用','基礎')+if(alternate=1,', 隔年','')"),
+                array(
                     "field" => "spec_Q1_string",
                     "expression" => "if(spec_Q1=1,'[基礎]',if(spec_Q1=2,'[応用]',spec_Q1_other))",
                 ),
