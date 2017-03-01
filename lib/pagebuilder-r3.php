@@ -243,6 +243,24 @@ IM_Entry(
             ),
             "db-class" => "PDO",
         ),
+        array(
+            "name" => "subject2018",
+            'aggregation-select' => "s.subject_id, s.name, s.wday_pos, s.m_pos, s.m_height, s.intensive, course.color",
+            'aggregation-from' => "subject AS s INNER JOIN course ON course.course_id=s.course_id",
+            //'aggregation-group-by' => "subject.subject_id",
+            "key" => "subject_id",
+            "records" => 100,
+            "query" => array(
+                array("field" => "executed_year", "operator" => "=", "value" => 30),
+                array("field" => "seminar", "operator" => "=", "value" => "0"),
+                //array("field" => "invisible", "operator" => "=", "value" => "0"),
+            ),
+            "calculation" => array(
+                array("field" => "pos_x", "expression" => "((wday_pos-1)*120+if(intensive=1,60,0)) + 'px'"),
+                array("field" => "pos_y", "expression" => "((m_pos+1)*40+if(intensive=1,4,0)) + 'px'",),
+                array("field" => "h", "expression" => "(m_height*40-if(intensive=1,8,0)) + 'px'",),
+            ),
+        ),
     ),
     array(
         'formatter' => array(
