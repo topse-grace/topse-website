@@ -256,11 +256,7 @@ IM_Entry(
                 array("field" => "contest", "operator" => "=", "value" => "0"),
                 array("field" => "invisible", "operator" => "=", "value" => "0"),
             ),
-            "calculation" => array(
-                array("field" => "pos_x", "expression" => "((wday_pos-1)*120+if(intensive=1,60,0)) + 'px'"),
-                array("field" => "pos_y", "expression" => "((m_pos+1)*40+if(intensive=1,4,0)) + 'px'",),
-                array("field" => "h", "expression" => "(m_height*40-if(intensive=1,8,0)) + 'px'",),
-            ),
+            "db-class" => "PDO",
         ),
     ),
     array(
@@ -330,5 +326,5 @@ IM_Entry(
     array(
         'db-class' => 'Null',
     ),
-    2
+    false
 );
