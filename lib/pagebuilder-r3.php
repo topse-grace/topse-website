@@ -253,7 +253,8 @@ IM_Entry(
             "query" => array(
                 array("field" => "executed_year", "operator" => "=", "value" => 30),
                 array("field" => "seminar", "operator" => "=", "value" => "0"),
-                //array("field" => "invisible", "operator" => "=", "value" => "0"),
+                array("field" => "contest", "operator" => "=", "value" => "0"),
+                array("field" => "invisible", "operator" => "=", "value" => "0"),
             ),
             "calculation" => array(
                 array("field" => "pos_x", "expression" => "((wday_pos-1)*120+if(intensive=1,60,0)) + 'px'"),
@@ -329,7 +330,5 @@ IM_Entry(
     array(
         'db-class' => 'Null',
     ),
-    false
+    2
 );
-
-?>
