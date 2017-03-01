@@ -34,6 +34,7 @@ IM_Entry(
         ),
         array(
             "name" => "subjectlist",
+            "db-class" => "PDO",
             'aggregation-select' => "subject.*, FLOOR(remote_Q1 / 10) AS remote_Q1a, " .
                 "GROUP_CONCAT(DISTINCT CONCAT('<img src=\"images/s-', specQ5_name.swebok_id,'.png\" class=\"icon\"/>') ORDER BY specQ5_name.swebok_id SEPARATOR '\n') AS spec_Q5_string," .
                 "GROUP_CONCAT(DISTINCT responsible_teacher.teacher_name ORDER BY responsible_teacher.ordering SEPARATOR ', ') AS teachers," .
