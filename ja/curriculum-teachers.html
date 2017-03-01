@@ -113,7 +113,7 @@
 </div>
 <section class="row" style="display:none;">
     <div class="container" style="background-color:#fff">
-        <h2>講師一覧（2016年度）</h2>
+        <h2>講師一覧（2017年度）</h2>
         <hr>
         <!--<p><a href="https://sp.topse.jp/web_teachers28.html" target="_blank">こちらをクリック[別ウインドウに表示]</a>して表示される講師一覧よりご覧ください．-->
         <!--<br/><br/><br/><br/><br/><br/>-->
@@ -121,38 +121,38 @@
         <div data-im-control="enclosure">
             <div data-im-control="repeater">
                 <h3>
-                    <span data-im="teachers2016@teacher_name" style="font-weight: bold;"></span>
-                    <span class="affiliation" data-im="teachers2016@affiliation"></span>
+                    <span data-im="teacherlist@teacher_name" style="font-weight: bold;"></span>
+                    <span class="affiliation" data-im="teacherlist@affiliation"></span>
                 </h3>
                 <div class="contorollink">
                     <a href="javascript:toggleDetail($)" id="box"
-                       data-im="teachers2016@teacher_id@$href teachers2016@teacher_id@#id">プロフィール</a>
+                       data-im="teacherlist@teacher_id@$href teacherlist@teacher_id@#id">プロフィール</a>
                 </div>
-                <div id="table" data-im="teachers2016@teacher_id@#id" style="display:none;">
+                <div id="table" data-im="teacherlist@teacher_id@#id" style="display:none;">
                     <div class="itemtable">
                         <div class="listitem">
                             <div class="listlabel">担当講義：</div>
-                            <div class="listdata" data-im="teachers2016@subjects"></div>
+                            <div class="listdata" data-im="teacherlist@subjects"></div>
                         </div>
                         <div class="listitem">
                             <div class="listlabel">所属・役職：</div>
                             <div class="listdata">
-                                <span data-im="teachers2016@affiliation"></span>
-                                <span data-im="teachers2016@title"></span>
+                                <span data-im="teacherlist@affiliation"></span>
+                                <span data-im="teacherlist@title"></span>
                             </div>
                         </div>
                         <div class="listitem">
                             <div class="listlabel">研究分野：</div>
-                            <div class="listdata" data-im="teachers2016@focus"></div>
+                            <div class="listdata" data-im="teacherlist@focus"></div>
                         </div>
                         <div class="listitem">
                             <div class="listlabel">ひとこと：</div>
-                            <div class="listdata" data-im="teachers2016@introduce"></div>
+                            <div class="listdata" data-im="teacherlist@introduce"></div>
                         </div>
                     </div>
                     <div>
                         <img src="https://sp.topse.jp/images/"
-                             data-im="teachers2016@photofile@#src" class="teacher"/>
+                             data-im="teacherlist@photofile@#src" class="teacher"/>
                     </div>
                 </div>
             </div>
