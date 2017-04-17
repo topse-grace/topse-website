@@ -234,9 +234,10 @@ IM_Entry(
             "records" => 100,
             "query" => array(
                 array("field" => "executed_year", "operator" => "=", "value" => 29),
-                array("field" => "invisible", "operator" => "=", "value" => "0"),
-                array("field" => "seminar", "operator" => "=", "value" => "0"),
-                array("field" => "contest", "operator" => "=", "value" => "0"),
+                array("field" => "cate_calendar", "operator" => "=", "value" => 1),
+//                array("field" => "invisible", "operator" => "=", "value" => "0"),
+//                array("field" => "seminar", "operator" => "=", "value" => "0"),
+//                array("field" => "contest", "operator" => "=", "value" => "0"),
             ),
             "calculation" => array(
                 array("field" => "pos_x", "expression" => "((wday_pos-2)*110+65+if(intensive=1,60,0)) + 'px'"),
