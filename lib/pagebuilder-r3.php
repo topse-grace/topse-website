@@ -52,7 +52,7 @@ IM_Entry(
             "query" => array(
                 array("field" => "executed_year", "operator" => ">=", "value" => 29),
                 array("field" => "seminar", "operator" => "=", "value" => "0"),
-                array("field" => "invisible", "operator" => "=", "value" => "0"),
+                array("field" => "cate_syllabus", "operator" => "=", "value" => 1),
             ),
             "sort" => array(
                 array("field" => "executed_year", "direction" => "asc"),
@@ -234,7 +234,7 @@ IM_Entry(
             "records" => 100,
             "query" => array(
                 array("field" => "executed_year", "operator" => "=", "value" => 29),
-                array("field" => "cate_calendar", "operator" => "=", "value" => 1),
+                array("field" => "cate_timetable", "operator" => "=", "value" => 1),
 //                array("field" => "invisible", "operator" => "=", "value" => "0"),
 //                array("field" => "seminar", "operator" => "=", "value" => "0"),
 //                array("field" => "contest", "operator" => "=", "value" => "0"),
