@@ -269,8 +269,6 @@ IM_Entry(
             "query" => array(
                 array("field" => "executed_year", "operator" => "=", "value" => 30),
                 array("field" => "cate_advonly", "operator" => "=", "value" => 1),
-                array("field" => "cate_timetable", "operator" => "=", "value" => 1),
-
             ),
             "db-class" => "PDO",
         ),
