@@ -267,7 +267,7 @@ IM_Entry(
             "key" => "subject_id",
             "records" => 100,
             "query" => array(
-                array("field" => "executed_year", "operator" => "=", "value" => 30),
+                array("field" => "executed_year", "operator" => "=", "value" => 29),
                 array("field" => "cate_advonly", "operator" => "=", "value" => 1),
             ),
             "db-class" => "PDO",
