@@ -255,9 +255,22 @@ IM_Entry(
             "records" => 100,
             "query" => array(
                 array("field" => "executed_year", "operator" => "=", "value" => 30),
-                array("field" => "seminar", "operator" => "=", "value" => "0"),
-                array("field" => "contest", "operator" => "=", "value" => "0"),
-                array("field" => "invisible", "operator" => "=", "value" => "0"),
+                array("field" => "cate_timetable", "operator" => "=", "value" => 1),
+            ),
+            "db-class" => "PDO",
+        ),
+        array(
+            "name" => "subjectadv",
+            'aggregation-select' => "s.subject_id, s.name, s.wday_pos, s.m_pos, s.m_height, s.intensive, course.color",
+            'aggregation-from' => "subject AS s INNER JOIN course ON course.course_id=s.course_id",
+            //'aggregation-group-by' => "subject.subject_id",
+            "key" => "subject_id",
+            "records" => 100,
+            "query" => array(
+                array("field" => "executed_year", "operator" => "=", "value" => 30),
+                array("field" => "cate_advonly", "operator" => "=", "value" => 1),
+                array("field" => "cate_timetable", "operator" => "=", "value" => 1),
+
             ),
             "db-class" => "PDO",
         ),
