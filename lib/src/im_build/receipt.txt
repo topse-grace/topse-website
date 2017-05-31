@@ -1,0 +1,13 @@
+=================================================
+ INTER-Mediator Ver.5.6-RC2 was successfully Build
+ Check out: /Users/msyk/Documents/TopSE/topse-website-master/lib/src/im_build
+=================================================
+Date: 2017年 5月31日 水曜日 14時48分17秒 JST
+OS Info: Darwin dhcp47-001.r.nii.ac.jp 16.7.0 Darwin Kernel Version 16.7.0: Tue May  9 11:48:28 PDT 2017; root:xnu-3789.70.9~16/RELEASE_X86_64 x86_64
+Original: /Users/msyk/Documents/TopSE/topse-website-master/lib/src/INTER-Mediator
+Build to: /Users/msyk/Documents/TopSE/topse-website-master/lib/src/im_build/INTER-Mediator
+Your Choice: (2) Core only (the least set to work web applications)
+
+You can deploy the 'INTER-Mediator' folder into your web applications. Enjoy!!
+
+INTER-Mediator Web Site: https://inter-mediator.com/
