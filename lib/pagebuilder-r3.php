@@ -25,7 +25,12 @@ IM_Entry(
             'aggregation-from' => "responsible INNER JOIN subject ON subject.subject_id = responsible.subject_id INNER JOIN teacher ON teacher.teacher_id = responsible.teacher_id",
             'aggregation-group-by' => "responsible.teacher_id",
             "query" => array(
-                array("field" => "executed_year", "operator" => "=", "value" => "29"),
+                array("field" => "executed_year", "operator" => "=", "value" => 29),
+                array("field" => "cate_syllabus", "operator" => "=", "value" => 1),
+                array('field' => '__operation__'),
+                array("field" => "executed_year", "operator" => "=", "value" => 30),
+                array("field" => "cate_syllabus", "operator" => "=", "value" => 1),
+                array("field" => "alternate", "operator" => "=", "value" => 1),
             ),
             "sort" => array(
                 array("field" => "name_kana", "direction" => "asc"),
