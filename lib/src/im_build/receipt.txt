@@ -2,7 +2,7 @@
  INTER-Mediator Ver.5.7-dev was successfully Build
  Check out: /Users/msyk/Documents/TopSE-local/topse-website/lib/src/im_build
 =================================================
-Date: Fri Nov  3 17:06:05 JST 2017
+Date: Fri Nov  3 17:25:35 JST 2017
 OS Info: Darwin msyk-16G-MacBook.local 17.3.0 Darwin Kernel Version 17.3.0: Wed Oct 25 22:42:12 PDT 2017; root:xnu-4570.30.81.0.1~1/RELEASE_X86_64 x86_64
 Original: /Users/msyk/Documents/TopSE-local/topse-website/lib/src/INTER-Mediator
 Build to: /Users/msyk/Documents/TopSE-local/topse-website/lib/src/im_build/INTER-Mediator
