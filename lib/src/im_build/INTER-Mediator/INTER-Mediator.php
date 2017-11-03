@@ -17,13 +17,14 @@ if (function_exists('mb_internal_encoding')) {
     mb_internal_encoding('UTF-8');
 }
 
+spl_autoload_register('loadClass');
+
 require_once('DB_Interfaces.php');
-require_once('DB_Logger.php');
-require_once('DB_Settings.php');
-require_once('DB_UseSharedObjects.php');
-require_once('DB_AuthCommon.php');
-require_once('DB_Proxy.php');
-require_once('IMUtil.php');
+require_once('IMUtil.php'); //
+//require_once('DB_Logger.php');
+//require_once('DB_Settings.php');
+//require_once('DB_UseSharedObjects.php');
+//require_once('DB_Proxy.php');
 
 IMUtil::includeLibClasses(IMUtil::phpSecLibRequiredClasses());
 
@@ -39,15 +40,14 @@ if (isset($defaultTimezone)) {
 } else if (ini_get('date.timezone') == null) {
     date_default_timezone_set('UTC');
 }
+IMLocale::setLocale(LC_ALL);
 
 define("IM_TODAY", strftime('%Y-%m-%d'));
 $g_dbInstance = null;
 
-spl_autoload_register('loadClass');
-
 function IM_Entry($datasource, $options, $dbspecification, $debug = false)
 {
-    global $g_dbInstance, $g_serverSideCall;
+//    global $g_dbInstance, $g_serverSideCall;
 
     // check required PHP extensions
     $requiredFunctions = array(
@@ -89,11 +89,11 @@ function IM_Entry($datasource, $options, $dbspecification, $debug = false)
     if (isset($_GET['theme'])) {
         $themeManager = new Theme();
         $themeManager->processing();
-    } else if (isset($g_serverSideCall) && $g_serverSideCall) {
-        $dbInstance = new DB_Proxy();
-        $dbInstance->initialize($datasource, $options, $dbspecification, $debug);
-        $dbInstance->processingRequest("NON");
-        $g_dbInstance = $dbInstance;
+//    } else if (isset($g_serverSideCall) && $g_serverSideCall) {
+//        $dbInstance = new DB_Proxy();
+//        $dbInstance->initialize($datasource, $options, $dbspecification, $debug);
+//        $dbInstance->processingRequest("NON");
+//        $g_dbInstance = $dbInstance;
     } else if (!isset($_POST['access']) && isset($_GET['uploadprocess'])) {
         $fileUploader = new FileUploader();
         $fileUploader->processInfo();
@@ -147,12 +147,37 @@ function loadClass($className)
         strpos($className, 'PHPExcel_') === false &&
         $className !== 'Composer\Autoload\ClassLoader'
     ) {
-        $result = include_once $className . '.php';
+        if ($className === 'NumberFormatter' && !class_exists($className)) {
+            $className = 'IMNumberFormatter';
+        }
+        $imClassPath = array("", "DB_Support" . DIRECTORY_SEPARATOR, "Data_Converter" . DIRECTORY_SEPARATOR);
+        $incSeparator = IMUtil::isPHPExecutingWindows() ? ";" : ":";
+        $incPath = explode($incSeparator, get_include_path());
+        $isFileExists = false;
+        foreach ($incPath as $path) {
+            if (strlen($path)>0) {
+                foreach ($imClassPath as $imPath) {
+                    $classPath = $path . DIRECTORY_SEPARATOR . $imPath;
+                    if (IMUtil::isPHPExecutingWindows() ?
+                        (substr($classPath, 1, 1) !== ':') :
+                        (substr($classPath, 0, 1) !== '/'))   {
+                        $classPath = dirname(__FILE__) . DIRECTORY_SEPARATOR . $classPath;
+                    }
+                    if (file_exists("{$classPath}{$className}.php")) {
+                        $isFileExists = true;
+                        break 2;
+                    }
+                }
+            }
+        }
+        if ($isFileExists) {
+            $result = require_once("{$classPath}{$className}.php");
+        } else {
+            $result = require_once("{$className}.php");
+        }
         if (!$result) {
             $errorGenerator = new GenerateJSCode();
-            if ($className === "NumberFormatter") {
-                // abandon this case. In IMLocale class, check to exist this PHP system class.
-            } else if (strpos($className, "MessageStrings_") !== 0) {
+            if (strpos($className, "MessageStrings_") !== 0) {
                 $errorGenerator->generateErrorMessageJS("The class '{$className}' is not defined.");
             }
         }

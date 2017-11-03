@@ -1,11 +1,19 @@
 <?php
 
 /**
- * Created by PhpStorm.
- * User: msyk
- * Date: 2016/07/09
- * Time: 0:46
+ * INTER-Mediator
+ * Copyright (c) INTER-Mediator Directive Committee (http://inter-mediator.org)
+ * This project started at the end of 2009 by Masayuki Nii msyk@msyk.net.
+ *
+ * INTER-Mediator is supplied under MIT License.
+ * Please see the full license for details:
+ * https://github.com/INTER-Mediator/INTER-Mediator/blob/master/dist-docs/License.txt
+ *
+ * @copyright     Copyright (c) INTER-Mediator Directive Committee (http://inter-mediator.org)
+ * @link          https://inter-mediator.com/
+ * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 class DB_PDO_PostgreSQL_Handler extends DB_PDO_Handler
 {
     public function sqlSELECTCommand()
@@ -100,7 +108,7 @@ test_db       | im_sample    | person     | memo        |
  */
 
 
-    protected function getFieldLists($tableName, $keyField, $assocField, $assocValue)
+    protected function getFieldListsForCopy($tableName, $keyField, $assocField, $assocValue, $defaultValues)
     {
         try {
             $result = $this->getTableInfo($tableName);
@@ -115,6 +123,9 @@ test_db       | im_sample    | person     | memo        |
             } else if ($assocField === $row['column_name']) {
                 $fieldArray[] = $this->quotedEntityName($row['column_name']);
                 $listArray[] = $this->dbClassObj->link->quote($assocValue);
+            } else if (isset($defaultValues[$row['column_name']])) {
+                $fieldArray[] = $this->quotedEntityName($row['column_name']);
+                $listArray[] = $this->dbClassObj->link->quote($defaultValues[$row['Field']]);
             } else {
                 $fieldArray[] = $this->quotedEntityName($row['column_name']);
                 $listArray[] = $this->quotedEntityName($row['column_name']);

@@ -43,8 +43,6 @@ class GenerateJSCode
             . str_replace("\n", " ", addslashes($message)) . "{$q});";
     }
 
-    private $defaultsArray;
-
     public function generateInitialJSCode($datasource, $options, $dbspecification, $debug)
     {
         $q = '"';
@@ -58,8 +56,8 @@ class GenerateJSCode
         $oAuthRedirect = null;
         $themeName = "default";
         $dbClass = null;
-        $appLocale = null;
-        $appCurrency = null;
+        $appLocale = 'null';
+        $appCurrency = 'null';
         $params = IMUtil::getFromParamsPHPFile(array(
             "generatedPrivateKey", "passPhrase", "browserCompatibility",
             "scriptPathPrefix", "scriptPathSuffix",
@@ -82,8 +80,10 @@ class GenerateJSCode
         $documentRootPrefix = is_null($params["documentRootPrefix"]) ? "" : $params["documentRootPrefix"];
         $valuesForLocalContext = $params["valuesForLocalContext"];
         $themeName = is_null($params["themeName"]) ? $themeName : $params["themeName"];
-        $appLocale = isset($options['app-locale']) ? $options['app-locale'] : $params["appLocale"];
-        $appCurrency = isset($options['app-currency']) ? $options['app-currency'] : $params["appCurrency"];
+        $appLocale = isset($options['app-locale']) ? $options['app-locale']
+            : (isset($params['app-locale']) ? $params["appLocale"] : 'ja_JP');
+        $appCurrency = isset($options['app-currency']) ? $options['app-currency']
+            : (isset($params['app-currency']) ? $params["appCurrency"] : 'JP');
 
         /*
          * Read the JS programs regarding by the developing or deployed.
@@ -129,13 +129,10 @@ class GenerateJSCode
         } else {
             require_once(dirname(__FILE__) . "/INTER-Mediator-Support/{$dbClassName}.php");
         }
-        if (((float)phpversion()) < 5.3) {
-            $dbInstance = new $dbClassName();
-            if ($dbInstance != null) {
-                $defaultKey = $dbInstance->getDefaultKey();
-            }
-        } else {
-            $defaultKey = call_user_func(array($dbClassName, 'defaultKey'));
+        $dbInstance = new $dbClassName();
+        $dbInstance->setupHandlers();
+        if ($dbInstance != null && $dbInstance->specHandler != null) {
+            $defaultKey = $dbInstance->specHandler->getDefaultKey();
         }
         if ($defaultKey !== null) {
             $items = array();
@@ -259,8 +256,8 @@ class GenerateJSCode
 
         if (!is_null($appLocale)) {
             $this->generateAssignJS("INTERMediatorOnPage.appLocale", "{$q}{$appLocale}{$q}");
-            $this->generateAssignJS("INTERMediatorOnPage.localInfo",
-                "JSON.parse('".json_encode(IMLocaleFormatTable::getLocaleFormat($appLocale))."')");
+            $this->generateAssignJS("INTERMediatorOnPage.localeInfo",
+                "JSON.parse('" . json_encode(IMLocaleFormatTable::getCurrentLocaleFormat()) . "')");
         }
         if (!is_null($appCurrency)) {
             $this->generateAssignJS("INTERMediatorOnPage.appCurrency", "{$q}{$appCurrency}{$q}");
@@ -374,9 +371,10 @@ class GenerateJSCode
         $content = '';
         $content .= file_get_contents($currentDir . 'INTER-Mediator.js');
         $content .= file_get_contents($currentDir . 'INTER-Mediator-Page.js');
-        $content .= file_get_contents($currentDir . 'INTER-Mediator-Element.js');
         $content .= file_get_contents($currentDir . 'INTER-Mediator-Context.js');
         $content .= file_get_contents($currentDir . 'INTER-Mediator-Lib.js');
+        $content .= file_get_contents($currentDir . 'INTER-Mediator-Element.js');
+        $content .= file_get_contents($jsLibDir . 'js-expression-eval-parser.js');
         $content .= file_get_contents($currentDir . 'INTER-Mediator-Calc.js');
         $content .= file_get_contents($currentDir . 'INTER-Mediator-Parts.js');
         $content .= file_get_contents($currentDir . 'INTER-Mediator-Navi.js');
@@ -388,7 +386,6 @@ class GenerateJSCode
         $content .= file_get_contents($bi2phpDir . 'biRSA.js');
         $content .= file_get_contents($currentDir . 'Adapter_DBServer.js');
         $content .= file_get_contents($currentDir . 'INTER-Mediator-Events.js');
-        $content .= file_get_contents($jsLibDir . 'js-expression-eval-parser.js');
         $content .= file_get_contents($currentDir . 'INTER-Mediator-DoOnStart.js');
 
         return $content;
