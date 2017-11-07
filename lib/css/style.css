@@ -172,13 +172,6 @@ h4 {
 h5	{
 	margin-bottom: 0;
 }
-h5:before {
-    content: "Q. ";
-    color: #81B33A;
-    font-weight: bold;
-    font-size: 1.3em;
-}
-
 p {
     margin: 1em 0;
     font-size: 1em;
