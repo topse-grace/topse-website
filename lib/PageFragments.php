@@ -87,7 +87,7 @@ class PageFragments extends DB_UseSharedObjects
         libxml_use_internal_errors(true);
         $fContent = mb_convert_encoding(file_get_contents($filename), 'HTML-ENTITIES', 'UTF-8');
         $loadStatus = $dom->loadHTML($fContent);
-        if (! $loadStatus) {
+        if (!$loadStatus) {
             return null;
         } else {
             $xpath = new DOMXpath($dom);
