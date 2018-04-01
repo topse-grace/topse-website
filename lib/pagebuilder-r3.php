@@ -175,7 +175,7 @@ IM_Entry(
                 array("field" => "style_knowledge", "expression" => "if(length(syllabus_knowledge)<70,'none','block')"),
                 array("field" => "style_prereq", "expression" => "if(length(syllabus_prereq)<70,'none','block')"),
                 array("field" => "style_schedule", "expression" => "if(length(syllabus_schedule)<70,'none','block')"),
-                array("field" => "style_detail", "expression" => "'none'", //"if(length(syllabus_detail)<70,'none','block')"),
+                array("field" => "style_detail", "expression" => "if(length(syllabus_detail)>=0,'none','block')"),
                 array("field" => "style_effect", "expression" => "if(length(syllabus_effect)<70,'none','block')"),
                 array("field" => "style_tools", "expression" => "if(length(syllabus_tools)<70,'none','block')"),
                 array("field" => "style_eval", "expression" => "if(length(syllabus_eval)<70,'none','block')"),
