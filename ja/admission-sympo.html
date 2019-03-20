@@ -67,7 +67,21 @@
             text-indent: -2em;
             margin-left: 8px;
         }
+.poster {
+        background-color: gray;
+        color: white;
+        Border-radius: 4px;
+        cursor: pointer;
+        float: none;
+        font-size: 75%;
+        padding: 4px;
+}
     </style>
+<script>
+function openDoc(name){
+        window.open("../images/"+name+".pdf");
+}
+</script>
 </head>
 <body>
 <section class="row">
@@ -161,7 +175,7 @@
             </tr>
             <tr>
                 <th>17:00～</th>
-                <td>トップエスイー第13期　ポスターセッション</td>
+                <td>トップエスイー第13期　ポスターセッション　　　<span class="poster" onclick="openDoc('第13期生ポスター');">ポスター</span></td>
             </tr>
         </table>
         <ul>
