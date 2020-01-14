@@ -58,7 +58,7 @@ IM_Entry(
                 array("field" => "executed_year", "operator" => "=", "value" => 2020),
                 array("field" => "cate_syllabus", "operator" => "=", "value" => 1),
 //                array('field' => '__operation__'),
-//                array("field" => "executed_year", "operator" => "=", "value" => 30),
+//                array("field" => "executed_year", "operator" => "=", "value" => 31),
 //                array("field" => "cate_syllabus", "operator" => "=", "value" => 1),
 //                array("field" => "alternate", "operator" => "=", "value" => 1),
             ),
@@ -241,7 +241,7 @@ IM_Entry(
             "key" => "subject_id",
             "records" => 100,
             "query" => array(
-                array("field" => "executed_year", "operator" => "=", "value" => 31),
+                array("field" => "executed_year", "operator" => "=", "value" => 2020),
                 array("field" => "cate_timetable", "operator" => "=", "value" => 1),
 //                array("field" => "invisible", "operator" => "=", "value" => "0"),
 //                array("field" => "seminar", "operator" => "=", "value" => "0"),
