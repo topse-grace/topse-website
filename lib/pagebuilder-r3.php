@@ -25,7 +25,7 @@ IM_Entry(
             'aggregation-from' => "responsible INNER JOIN subject ON subject.subject_id = responsible.subject_id INNER JOIN teacher ON teacher.teacher_id = responsible.teacher_id",
             'aggregation-group-by' => "responsible.teacher_id",
             "query" => array(
-                array("field" => "executed_year", "operator" => "=", "value" => 31),
+                array("field" => "executed_year", "operator" => "=", "value" => 2020),
                 array("field" => "cate_syllabus", "operator" => "=", "value" => 1),
 //                array('field' => '__operation__'),
 //                array("field" => "executed_year", "operator" => "=", "value" => 30),
@@ -44,7 +44,7 @@ IM_Entry(
                 "GROUP_CONCAT(DISTINCT CONCAT('<img src=\"../images/s-', specQ5_name.swebok_id,'.png\" class=\"icon\"/>') ORDER BY specQ5_name.swebok_id SEPARATOR '\n') AS spec_Q5_string," .
                 "GROUP_CONCAT(DISTINCT responsible_teacher.teacher_name ORDER BY responsible_teacher.ordering SEPARATOR ', ') AS teachers," .
                 "course.name AS course_name, course.color AS course_color, executed_year, m_pos, wday_pos," .
-                "CONCAT('平成',executed_year,'年<br>',IF(executed_year=29,CONCAT(MOD(m_pos+3,12)+1,'月'),''),'開講') AS start_string," .
+                "CONCAT(executed_year,'年<br>',IF(executed_year=29,CONCAT(MOD(m_pos+3,12)+1,'月'),''),'開講') AS start_string," .
                 "executed_year * 1000 + m_pos *10 + wday_pos AS sortkey",
             'aggregation-from' => "subject " .
                 "LEFT OUTER JOIN specQ5_name ON specQ5_name.subject_id=subject.subject_id " .
@@ -55,10 +55,10 @@ IM_Entry(
             "navi-control" => "master-hide",
             "records" => 100,
             "query" => array(
-                array("field" => "executed_year", "operator" => "=", "value" => 31),
+                array("field" => "executed_year", "operator" => "=", "value" => 2020),
                 array("field" => "cate_syllabus", "operator" => "=", "value" => 1),
 //                array('field' => '__operation__'),
-//                array("field" => "executed_year", "operator" => "=", "value" => 30),
+//                array("field" => "executed_year", "operator" => "=", "value" => 31),
 //                array("field" => "cate_syllabus", "operator" => "=", "value" => 1),
 //                array("field" => "alternate", "operator" => "=", "value" => 1),
             ),
@@ -241,7 +241,7 @@ IM_Entry(
             "key" => "subject_id",
             "records" => 100,
             "query" => array(
-                array("field" => "executed_year", "operator" => "=", "value" => 31),
+                array("field" => "executed_year", "operator" => "=", "value" => 2020),
                 array("field" => "cate_timetable", "operator" => "=", "value" => 1),
 //                array("field" => "invisible", "operator" => "=", "value" => "0"),
 //                array("field" => "seminar", "operator" => "=", "value" => "0"),
@@ -262,7 +262,7 @@ IM_Entry(
             "key" => "subject_id",
             "records" => 100,
             "query" => array(
-                array("field" => "executed_year", "operator" => "=", "value" => 31),
+                array("field" => "executed_year", "operator" => "=", "value" => 2020),
                 array("field" => "cate_timetable", "operator" => "=", "value" => 1),
                 array("field" => "alternate", "operator" => "=", "value" => 1),
             ),
@@ -276,7 +276,7 @@ IM_Entry(
             "key" => "subject_id",
             "records" => 100,
             "query" => array(
-                array("field" => "executed_year", "operator" => "=", "value" => 31),
+                array("field" => "executed_year", "operator" => "=", "value" => 2020),
                 array("field" => "cate_advonly", "operator" => "=", "value" => 1),
             ),
             "db-class" => "PDO",
