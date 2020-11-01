@@ -38,6 +38,86 @@ IM_Entry(
             "db-class" => "PDO",
         ),
         array(
+            "name" => "subjectlist_next",
+            "db-class" => "PDO",
+            'aggregation-select' => "subject.*, " .
+                "GROUP_CONCAT(DISTINCT responsible_teacher.teacher_name ORDER BY responsible_teacher.ordering SEPARATOR ', ') AS teachers," .
+                "course.name AS course_name, course.color AS course_color, " .
+                "CONCAT(executed_year,'年<br>',IF(executed_year=29,CONCAT(MOD(m_pos+3,12)+1,'月'),''),'開講') AS start_string," .
+                "executed_year * 1000 + m_pos *10 + wday_pos AS sortkey",
+            'aggregation-from' => "subject " .
+                "LEFT OUTER JOIN responsible_teacher on responsible_teacher.subject_id=subject.subject_id " .
+                "INNER JOIN course ON course.course_id=subject.course_id",
+            'aggregation-group-by' => "subject.subject_id",
+            "key" => "subject_id",
+            "navi-control" => "master-hide",
+            "records" => 100,
+            "query" => array(
+                array("field" => "executed_year", "operator" => "=", "value" => 2021),
+                array("field" => "cate_syllabus", "operator" => "=", "value" => 1),
+//                array('field' => '__operation__'),
+//                array("field" => "executed_year", "operator" => "=", "value" => 31),
+//                array("field" => "cate_syllabus", "operator" => "=", "value" => 1),
+//                array("field" => "alternate", "operator" => "=", "value" => 1),
+            ),
+            "sort" => array(
+                array("field" => "executed_year", "direction" => "asc"),
+                array("field" => "m_pos", "direction" => "asc"),
+                array("field" => "wday_pos", "direction" => "asc"),
+                array("field" => "semester", "direction" => "asc"),
+            ),
+            "button-names" => array(
+                "navi-detail" => "シラバス 表示",
+            ),
+            "calculation" => array(
+                 array(
+                    "field" => "spec_Q41_on",
+                    "expression" => "if(spec_Q4_1=1,'inline','none')",
+                ),
+                array(
+                    "field" => "spec_Q42_on",
+                    "expression" => "if(spec_Q4_2=1,'inline','none')",
+                ),
+                array(
+                    "field" => "spec_Q43_on",
+                    "expression" => "if(spec_Q4_3=1,'inline','none')",
+                ),
+                array(
+                    "field" => "spec_Q44_on",
+                    "expression" => "if(spec_Q4_4=1,'inline','none')",
+                ),
+                array(
+                    "field" => "spec_Q45_on",
+                    "expression" => "if(spec_Q4_5=1,'inline','none')",
+                ),
+                array(
+                    "field" => "spec_Q46_on",
+                    "expression" => "if(spec_Q4_6=1,'inline','none')",
+                ),
+                array(
+                    "field" => "spec_Q47_on",
+                    "expression" => "if(spec_Q4_7=1,'inline','none')",
+                ),
+                array(
+                    "field" => "spec_Q48_on",
+                    "expression" => "if(spec_Q4_8=1,'inline','none')",
+                ),
+                array(
+                    "field" => "spec_Q49_on",
+                    "expression" => "if(spec_Q4_9=1,'inline','none')",
+                ),
+                array(
+                    "field" => "spec_Q410_on",
+                    "expression" => "if(spec_Q4_10=1,'inline','none')",
+                ),
+                array(
+                    "field" => "spec_Q411_on",
+                    "expression" => "if(spec_Q4_11=1,'inline','none')",
+                ),
+            ),
+        ),
+
+        array(
             "name" => "subjectlist",
             "db-class" => "PDO",
             'aggregation-select' => "subject.*, FLOOR(remote_Q1 / 10) AS remote_Q1a, " .
