@@ -17,7 +17,7 @@
         INTERMediatorOnPage.appendDoAfterConstruct = function () {
             var params = INTERMediatorOnPage.getURLParametersAsArray();
             if (params['c'] && !INTERMediator.partialConstructing) {
-                var context = IMLibContextPool.contextFromName('subjectlist');
+                var context = IMLibContextPool.contextFromName('subjectlist_next');
                 var key = 'subject_id=' + params['c'];
                 var buttonId = context.store[key]['_im_button_master_id'];
                 document.getElementById(buttonId).click();
@@ -252,13 +252,13 @@
             </tr>
             <tr>
                 <!--<th class="bottom_boldline" style="width: 60px;line-height: 100%;text-align: center;">
-                    <span style="cursor: pointer" data-im="_@addorder:subjectlist:semester:asc">開催<br>時期</span>
+                    <span style="cursor: pointer" data-im="_@addorder:subjectlist_next:semester:asc">開催<br>時期</span>
                 </th>-->
                 <th class="bottom_boldline" style="width: 90px;text-align: center;">
-                    <span style="cursor: pointer" data-im="_@addorder:subjectlist:course_name:asc">シリーズ</span>
+                    <span style="cursor: pointer" data-im="_@addorder:subjectlist_next:course_name:asc">シリーズ</span>
                 </th>
                 <th class="bottom_boldline" style="text-align: center;">
-                    <span style="cursor: pointer" data-im="_@addorder:subjectlist:name:asc">講義名（アイコンは遠隔対応）</span>
+                    <span style="cursor: pointer" data-im="_@addorder:subjectlist_next:name:asc">講義名（アイコンは遠隔対応）</span>
                 </th>
                 <th class="bottom_boldline" style="width: 160px; background-color: #e5e5e5;text-align: center;">
                     講義の傾向
@@ -269,37 +269,37 @@
             <tbody>
             <tr>
                 <td>
-                    <span data-im="subjectlist@course_name"></span>
+                    <span data-im="subjectlist_next@course_name"></span>
                 </td>
-                <td style="padding: 4px 4px 4px 16px;" data-im="subjectlist@course_color@style.backgroundColor">
-                    <span style="font-size: 16pt;" data-im="subjectlist@name"></span>
+                <td style="padding: 4px 4px 4px 16px;" data-im="subjectlist_next@course_color@style.backgroundColor">
+                    <span style="font-size: 16pt;" data-im="subjectlist_next@name"></span>
                 </td>
                 <td style="text-align: center;background-color: #e5e5e5;" rowspan="2">
-                    <img src="../images/4-7.png" data-im="subjectlist@spec_Q47_on@style.display" class="icon"/>
-                    <img src="../images/4-8.png" data-im="subjectlist@spec_Q48_on@style.display" class="icon"/>
-                    <img src="../images/4-9.png" data-im="subjectlist@spec_Q49_on@style.display" class="icon"/>
-                    <img src="../images/4-10.png" data-im="subjectlist@spec_Q410_on@style.display" class="icon"/>
-                    <img src="../images/4-11.png" data-im="subjectlist@spec_Q411_on@style.display" class="icon"/>
-                    <img src="../images/4-1.png" data-im="subjectlist@spec_Q41_on@style.display" class="icon"/>
-                    <img src="../images/4-2.png" data-im="subjectlist@spec_Q42_on@style.display" class="icon"/>
-                    <img src="../images/4-3.png" data-im="subjectlist@spec_Q43_on@style.display" class="icon"/>
-                    <img src="../images/4-4.png" data-im="subjectlist@spec_Q44_on@style.display" class="icon"/>
-                    <img src="../images/4-5.png" data-im="subjectlist@spec_Q45_on@style.display" class="icon"/>
-                    <img src="../images/4-6.png" data-im="subjectlist@spec_Q46_on@style.display" class="icon"/>
+                    <img src="../images/4-7.png" data-im="subjectlist_next@spec_Q47_on@style.display" class="icon"/>
+                    <img src="../images/4-8.png" data-im="subjectlist_next@spec_Q48_on@style.display" class="icon"/>
+                    <img src="../images/4-9.png" data-im="subjectlist_next@spec_Q49_on@style.display" class="icon"/>
+                    <img src="../images/4-10.png" data-im="subjectlist_next@spec_Q410_on@style.display" class="icon"/>
+                    <img src="../images/4-11.png" data-im="subjectlist_next@spec_Q411_on@style.display" class="icon"/>
+                    <img src="../images/4-1.png" data-im="subjectlist_next@spec_Q41_on@style.display" class="icon"/>
+                    <img src="../images/4-2.png" data-im="subjectlist_next@spec_Q42_on@style.display" class="icon"/>
+                    <img src="../images/4-3.png" data-im="subjectlist_next@spec_Q43_on@style.display" class="icon"/>
+                    <img src="../images/4-4.png" data-im="subjectlist_next@spec_Q44_on@style.display" class="icon"/>
+                    <img src="../images/4-5.png" data-im="subjectlist_next@spec_Q45_on@style.display" class="icon"/>
+                    <img src="../images/4-6.png" data-im="subjectlist_next@spec_Q46_on@style.display" class="icon"/>
                 </td>
                 <td style="text-align: left;max-width:400px;line-height: 18px" rowspan="2">
-                    <span data-im="subjectlist@summary_spec" style="font-size: 80%;line-height: 110%;"></span>
+                    <span data-im="subjectlist_next@summary_spec" style="font-size: 80%;line-height: 110%;"></span>
                 </td>
             </tr>
             <tr>
                 <td style="text-align:center;" class="bottom_line">
-                    <span style="display:none;" class="codenode" data-im="subjectlist@subject_id"></span>
+                    <span style="display:none;" class="codenode" data-im="subjectlist_next@subject_id"></span>
                 </td>
                 <td style="padding-left: 14px;" class="bottom_line">
                     <span class="label">担当講師：</span>
-                    <span data-im="subjectlist@teachers"></span>
+                    <span data-im="subjectlist_next@teachers"></span>
                     <span class="label">&nbsp;&nbsp;&nbsp;単位数：</span>
-                    <span data-im="subjectlist@credit"></span>
+                    <span data-im="subjectlist_next@credit"></span>
                 </td>
             </tr>
             </tbody>
