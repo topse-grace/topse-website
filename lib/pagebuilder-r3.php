@@ -53,7 +53,7 @@ IM_Entry(
             "navi-control" => "master-hide",
             "records" => 100,
             "query" => array(
-                array("field" => "executed_year", "operator" => "=", "value" => 2021),
+                array("field" => "executed_year", "operator" => "=", "value" => 2022),
                 array("field" => "cate_syllabus", "operator" => "=", "value" => 1),
 //                array('field' => '__operation__'),
 //                array("field" => "executed_year", "operator" => "=", "value" => 31),
@@ -70,7 +70,10 @@ IM_Entry(
                 "navi-detail" => "シラバス 表示",
             ),
             "calculation" => array(
-                 array(
+                array(
+                    "field" => "remoteStyle",
+                    "expression" => "if(remote_Q1=20,'block','none')"),
+                array(
                     "field" => "spec_Q41_on",
                     "expression" => "if(spec_Q4_1=1,'inline','none')",
                 ),
@@ -120,14 +123,12 @@ IM_Entry(
         array(
             "name" => "subjectlist",
             "db-class" => "PDO",
-            'aggregation-select' => "subject.*, FLOOR(remote_Q1 / 10) AS remote_Q1a, " .
-                "GROUP_CONCAT(DISTINCT CONCAT('<img src=\"../images/s-', specQ5_name.swebok_id,'.png\" class=\"icon\"/>') ORDER BY specQ5_name.swebok_id SEPARATOR '\n') AS spec_Q5_string," .
+            'aggregation-select' => "subject.*," .
                 "GROUP_CONCAT(DISTINCT responsible_teacher.teacher_name ORDER BY responsible_teacher.ordering SEPARATOR ', ') AS teachers," .
                 "course.name AS course_name, course.color AS course_color, executed_year, m_pos, wday_pos," .
                 "CONCAT(executed_year,'年<br>',IF(executed_year=29,CONCAT(MOD(m_pos+3,12)+1,'月'),''),'開講') AS start_string," .
                 "executed_year * 1000 + m_pos *10 + wday_pos AS sortkey",
             'aggregation-from' => "subject " .
-                "LEFT OUTER JOIN specQ5_name ON specQ5_name.subject_id=subject.subject_id " .
                 "LEFT OUTER JOIN responsible_teacher on responsible_teacher.subject_id=subject.subject_id " .
                 "INNER JOIN course ON course.course_id=subject.course_id",
             'aggregation-group-by' => "subject.subject_id",
@@ -135,7 +136,7 @@ IM_Entry(
             "navi-control" => "master-hide",
             "records" => 100,
             "query" => array(
-                array("field" => "executed_year", "operator" => "=", "value" => 2020),
+                array("field" => "executed_year", "operator" => "=", "value" => 2021),
                 array("field" => "cate_syllabus", "operator" => "=", "value" => 1),
 //                array('field' => '__operation__'),
 //                array("field" => "executed_year", "operator" => "=", "value" => 31),
@@ -153,44 +154,8 @@ IM_Entry(
             ),
             "calculation" => array(
                 array(
-                    "field" => "info_string",
-                    "expression" => "if(advance=1,'応用','基礎')+if(alternate=1,', 隔年','')"),
-                array(
-                    "field" => "spec_Q1_string",
-                    "expression" => "if(spec_Q1=1,'[基礎]',if(spec_Q1=2,'[応用]',spec_Q1_other))",
-                ),
-                array(
-                    "field" => "spec_Q2_string",
-                    "expression" => "if(spec_Q2=1,'[講義のみ]',if(spec_Q2=2,'[演習は50%未満]',if(spec_Q2=3,'[演習は50%超]',spec_Q1_other)))",
-                ),
-                array(
-                    "field" => "spec_Q3_string",
-                    "expression" => "if(spec_Q3=1,'[グループ作業は50%未満]',if(spec_Q3=2,'[グループ作業は50%超]',spec_Q1_other))",
-                ),
-                array(
-                    "field" => "spec_Q41_string",
-                    "expression" => "if(spec_Q41=1,'[事例のトピックがある]','')",
-                ),
-                array(
-                    "field" => "spec_Q42_string",
-                    "expression" => "if(spec_Q42=1,'[先端研究のトピックがある]','')",
-                ),
-                array(
-                    "field" => "spec_Q43_string",
-                    "expression" => "if(spec_Q43=1,'[網羅的である]','')",
-                ),
-                array(
-                    "field" => "spec_Q4_string",
-                    "expression" => "if(spec_Q4_other<>'','['+spec_Q4_other+']','')",
-                ),
-                array(
-                    "field" => "remote_Q1_string",
-                    "expression" => "if(remote_Q1>29,'[遠隔不可]',if(remote_Q1>19,'[一部は教室受講]',if(remote_Q1>9,'[遠隔可能]','')))",
-                ),
-                array(
-                    "field" => "spec_Q2_Q3",
-                    "expression" => "if(spec_Q2=1,1,if(spec_Q2=2,if(spec_Q3=1,2,3),if(spec_Q3=1,4,5)))",
-                ),
+                    "field" => "remoteStyle",
+                    "expression" => "if(remote_Q1=20,'block','none')"),
                 array(
                     "field" => "spec_Q41_on",
                     "expression" => "if(spec_Q4_1=1,'inline','none')",
@@ -214,6 +179,26 @@ IM_Entry(
                 array(
                     "field" => "spec_Q46_on",
                     "expression" => "if(spec_Q4_6=1,'inline','none')",
+                ),
+                array(
+                    "field" => "spec_Q47_on",
+                    "expression" => "if(spec_Q4_7=1,'inline','none')",
+                ),
+                array(
+                    "field" => "spec_Q48_on",
+                    "expression" => "if(spec_Q4_8=1,'inline','none')",
+                ),
+                array(
+                    "field" => "spec_Q49_on",
+                    "expression" => "if(spec_Q4_9=1,'inline','none')",
+                ),
+                array(
+                    "field" => "spec_Q410_on",
+                    "expression" => "if(spec_Q4_10=1,'inline','none')",
+                ),
+                array(
+                    "field" => "spec_Q411_on",
+                    "expression" => "if(spec_Q4_11=1,'inline','none')",
                 ),
             ),
         ),
