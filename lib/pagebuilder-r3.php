@@ -145,6 +145,7 @@ IM_Entry(
             ),
             "sort" => array(
                 array("field" => "executed_year", "direction" => "asc"),
+                array("field" => "course.ordering", "direction" => "asc"),
                 array("field" => "m_pos", "direction" => "asc"),
                 array("field" => "wday_pos", "direction" => "asc"),
                 array("field" => "semester", "direction" => "asc"),
