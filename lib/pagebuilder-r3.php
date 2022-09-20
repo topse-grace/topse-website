@@ -25,7 +25,7 @@ IM_Entry(
             'aggregation-from' => "responsible INNER JOIN subject ON subject.subject_id = responsible.subject_id INNER JOIN teacher ON teacher.teacher_id = responsible.teacher_id",
             'aggregation-group-by' => "responsible.teacher_id",
             "query" => array(
-                array("field" => "executed_year", "operator" => "=", "value" => 2023),
+                array("field" => "executed_year", "operator" => "=", "value" => 2022),
                 array("field" => "cate_syllabus", "operator" => "=", "value" => 1),
 //                array('field' => '__operation__'),
 //                array("field" => "executed_year", "operator" => "=", "value" => 30),
@@ -53,7 +53,7 @@ IM_Entry(
             "navi-control" => "master-hide",
             "records" => 100,
             "query" => array(
-                array("field" => "executed_year", "operator" => "=", "value" => 2023),
+                array("field" => "executed_year", "operator" => "=", "value" => 2022),
                 array("field" => "cate_syllabus", "operator" => "=", "value" => 1),
 //                array('field' => '__operation__'),
 //                array("field" => "executed_year", "operator" => "=", "value" => 31),
@@ -136,7 +136,7 @@ IM_Entry(
             "navi-control" => "master-hide",
             "records" => 100,
             "query" => array(
-                array("field" => "executed_year", "operator" => "=", "value" => 2023),
+                array("field" => "executed_year", "operator" => "=", "value" => 2022),
                 array("field" => "cate_syllabus", "operator" => "=", "value" => 1),
 //                array('field' => '__operation__'),
 //                array("field" => "executed_year", "operator" => "=", "value" => 31),
@@ -307,7 +307,7 @@ IM_Entry(
             "key" => "subject_id",
             "records" => 100,
             "query" => array(
-                array("field" => "executed_year", "operator" => "=", "value" => 2023),
+                array("field" => "executed_year", "operator" => "=", "value" => 2022),
                 array("field" => "cate_timetable", "operator" => "=", "value" => 1),
 //                array("field" => "invisible", "operator" => "=", "value" => "0"),
 //                array("field" => "seminar", "operator" => "=", "value" => "0"),
@@ -328,7 +328,7 @@ IM_Entry(
             "key" => "subject_id",
             "records" => 100,
             "query" => array(
-                array("field" => "executed_year", "operator" => "=", "value" => 2023),
+                array("field" => "executed_year", "operator" => "=", "value" => 2022),
                 array("field" => "cate_timetable", "operator" => "=", "value" => 1),
                 array("field" => "alternate", "operator" => "=", "value" => 1),
             ),
@@ -342,7 +342,7 @@ IM_Entry(
             "key" => "subject_id",
             "records" => 100,
             "query" => array(
-                array("field" => "executed_year", "operator" => "=", "value" => 2023),
+                array("field" => "executed_year", "operator" => "=", "value" => 2022),
                 array("field" => "cate_advonly", "operator" => "=", "value" => 1),
             ),
             "db-class" => "PDO",
