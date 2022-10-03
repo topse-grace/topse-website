@@ -40,9 +40,9 @@ IM_Entry(
         array(
             "name" => "subjectlist_next",
             "db-class" => "PDO",
-            'aggregation-select' => "subject.*, " .
+            'aggregation-select' => "subject.*," .
                 "GROUP_CONCAT(DISTINCT responsible_teacher.teacher_name ORDER BY responsible_teacher.ordering SEPARATOR ', ') AS teachers," .
-                "course.name AS course_name, course.color AS course_color, " .
+                "course.name AS course_name, course.color AS course_color, executed_year, m_pos, wday_pos," .
                 "CONCAT(executed_year,'年<br>',IF(executed_year=29,CONCAT(MOD(m_pos+3,12)+1,'月'),''),'開講') AS start_string," .
                 "executed_year * 1000 + m_pos *10 + wday_pos AS sortkey",
             'aggregation-from' => "subject " .
@@ -53,7 +53,7 @@ IM_Entry(
             "navi-control" => "master-hide",
             "records" => 100,
             "query" => array(
-                array("field" => "executed_year", "operator" => "=", "value" => 2022),
+                array("field" => "executed_year", "operator" => "=", "value" => 2023),
                 array("field" => "cate_syllabus", "operator" => "=", "value" => 1),
 //                array('field' => '__operation__'),
 //                array("field" => "executed_year", "operator" => "=", "value" => 31),
@@ -62,6 +62,7 @@ IM_Entry(
             ),
             "sort" => array(
                 array("field" => "executed_year", "direction" => "asc"),
+                array("field" => "course.ordering", "direction" => "asc"),
                 array("field" => "m_pos", "direction" => "asc"),
                 array("field" => "wday_pos", "direction" => "asc"),
                 array("field" => "semester", "direction" => "asc"),
