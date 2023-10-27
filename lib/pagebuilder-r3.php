@@ -73,7 +73,7 @@ IM_Entry(
             "calculation" => array(
                 array(
                     "field" => "remoteStyle",
-                    "expression" => "if(remote_Q1=20,'block','none')"),
+                    "expression" => "if(remote_Q1=20,'none','none')"),// always not show
                 array(
                     "field" => "spec_Q41_on",
                     "expression" => "if(spec_Q4_1=1,'inline','none')",
@@ -157,7 +157,7 @@ IM_Entry(
             "calculation" => array(
                 array(
                     "field" => "remoteStyle",
-                    "expression" => "if(remote_Q1=20,'block','none')"),
+                    "expression" => "if(remote_Q1=20,'none','none')"),// always not show
                 array(
                     "field" => "spec_Q41_on",
                     "expression" => "if(spec_Q4_1=1,'inline','none')",
