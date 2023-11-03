@@ -14,15 +14,15 @@
     <script src="../lib/js/bootstrap.min.js"></script>
     <script src="../lib/pagebuilder-r3.php"></script>
     <script>
-        INTERMediatorOnPage.appendDoAfterConstruct = function () {
-            var params = INTERMediatorOnPage.getURLParametersAsArray();
-            if (params['c'] && !INTERMediator.partialConstructing) {
-                var context = IMLibContextPool.contextFromName('subjectlist_next');
-                var key = 'subject_id=' + params['c'];
-                var buttonId = context.store[key]['_im_button_master_id'];
-                document.getElementById(buttonId).click();
-            }
+      INTERMediatorOnPage.appendDoAfterConstruct = function () {
+        var params = INTERMediatorOnPage.getURLParametersAsArray();
+        if (params['c'] && !INTERMediator.partialConstructing) {
+          var context = IMLibContextPool.contextFromName('subjectlist_next');
+          var key = 'subject_id=' + params['c'];
+          var buttonId = context.store[key]['_im_button_master_id'];
+          document.getElementById(buttonId).click();
         }
+      }
     </script>
     <script src="../lib/pagebuilder-r3.js"></script>
     <style>
@@ -222,6 +222,13 @@
             margin: 0;
         }
 
+        .unitbox {
+            color: white;
+            font-weight: bold;
+            background-color: rgba(0, 0, 0, 0.4);
+            border-radius: 20px;
+            padding: 4px 10px;
+        }
     </style>
 </head>
 <body>
@@ -257,8 +264,11 @@
                 <th class="bottom_boldline" style="width: 90px;text-align: center;">
                     <span style="cursor: pointer" data-im="_@addorder:subjectlist_next:course_name:asc">シリーズ</span>
                 </th>
-                <th class="bottom_boldline" style="text-align: center;">
-                    <span style="cursor: pointer" data-im="_@addorder:subjectlist_next:name:asc">講義名</span>
+                <th class="bottom_boldline">
+                    <div style="display: flex;justify-content: space-between">
+                        <span style="cursor: pointer" data-im="_@addorder:subjectlist:name:asc">講義名／担当講師</span>
+                        <span class="unitbox">単位数</span>
+                    </div>
                 </th>
                 <th class="bottom_boldline" style="width: 160px; background-color: #e5e5e5;text-align: center;">
                     講義の傾向
@@ -272,9 +282,10 @@
                     <span data-im="subjectlist_next@course_name"></span>
                 </td>
                 <td style="padding: 4px 4px 4px 16px;" data-im="subjectlist_next@course_color@style.backgroundColor">
-                    <img src="../images/R-2.png" data-im="subjectlist_next@remoteStyle@style.display"
-                         style="height:32px; float: right">
-                    <span style="font-size: 16pt;" data-im="subjectlist_next@name"></span>
+                    <div style="display: flex;justify-content: space-between; align-items:flex-start">
+                        <span style="font-size: 16pt;" data-im="subjectlist_next@name"></span>
+                        <span class="unitbox" data-im="subjectlist_next@credit"></span>
+                    </div>
                 </td>
                 <td style="text-align: center;background-color: #e5e5e5;" rowspan="2">
                     <img src="../images/4-7.png" data-im="subjectlist_next@spec_Q47_on@style.display" class="icon"/>
@@ -298,10 +309,7 @@
                     <span style="display:none;" class="codenode" data-im="subjectlist_next@subject_id"></span>
                 </td>
                 <td style="padding-left: 14px;" class="bottom_line">
-                    <span class="label">担当講師：</span>
                     <span data-im="subjectlist_next@teachers"></span>
-                    <span class="label">&nbsp;&nbsp;&nbsp;単位数：</span>
-                    <span data-im="subjectlist_next@credit"></span>
                 </td>
             </tr>
             </tbody>
