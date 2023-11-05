@@ -14,15 +14,15 @@
     <script src="../lib/js/bootstrap.min.js"></script>
     <script src="../lib/pagebuilder-r3.php"></script>
     <script>
-        INTERMediatorOnPage.appendDoAfterConstruct = function () {
-            var params = INTERMediatorOnPage.getURLParametersAsArray();
-            if (params['c'] && !INTERMediator.partialConstructing) {
-                var context = IMLibContextPool.contextFromName('subjectlist');
-                var key = 'subject_id=' + params['c'];
-                var buttonId = context.store[key]['_im_button_master_id'];
-                document.getElementById(buttonId).click();
-            }
+      INTERMediatorOnPage.appendDoAfterConstruct = function () {
+        var params = INTERMediatorOnPage.getURLParametersAsArray();
+        if (params['c'] && !INTERMediator.partialConstructing) {
+          var context = IMLibContextPool.contextFromName('subjectlist');
+          var key = 'subject_id=' + params['c'];
+          var buttonId = context.store[key]['_im_button_master_id'];
+          document.getElementById(buttonId).click();
         }
+      }
     </script>
     <script src="../lib/pagebuilder-r3.js"></script>
     <style>
@@ -222,6 +222,13 @@
             margin: 0;
         }
 
+        .unitbox {
+            color: white;
+            font-weight: bold;
+            background-color: rgba(0, 0, 0, 0.4);
+            border-radius: 20px;
+            padding: 4px 10px;
+        }
     </style>
 </head>
 <body>
@@ -258,7 +265,10 @@
                     <span style="cursor: pointer" data-im="_@addorder:subjectlist:course_name:asc">シリーズ</span>
                 </th>
                 <th class="bottom_boldline" style="text-align: center;">
-                    <span style="cursor: pointer" data-im="_@addorder:subjectlist:name:asc">講義名</span>
+                    <div style="display: flex;justify-content: space-between; align-items:flex-start">
+                        <span style="cursor: pointer" data-im="_@addorder:subjectlist:name:asc">講義名／担当講師</span>
+                        <span class="unitbox">単位数</span>
+                    </div>
                 </th>
                 <th class="bottom_boldline" style="width: 160px; background-color: #e5e5e5;text-align: center;">
                     講義の傾向
@@ -272,9 +282,10 @@
                     <span data-im="subjectlist@course_name"></span>
                 </td>
                 <td style="padding: 4px 4px 4px 16px;" data-im="subjectlist@course_color@style.backgroundColor">
-<!--                    <img src="../images/R-2.png" data-im="subjectlist@remoteStyle@style.display"-->
-<!--                         style="height:32px; float: right">-->
-                    <span style="font-size: 16pt;" data-im="subjectlist@name"></span>
+                    <div style="display: flex;justify-content: space-between; align-items:flex-start">
+                        <span style="font-size: 16pt;" data-im="subjectlist@name"></span>
+                        <span class="unitbox" data-im="subjectlist@credit"></span>
+                    </div>
                 </td>
                 <td style="text-align: center;background-color: #e5e5e5;" rowspan="2">
                     <img src="../images/4-7.png" data-im="subjectlist@spec_Q47_on@style.display" class="icon"/>
@@ -298,10 +309,7 @@
                     <span style="display:none;" class="codenode" data-im="subjectlist@subject_id"></span>
                 </td>
                 <td style="padding-left: 14px;" class="bottom_line">
-                    <span class="label">担当講師：</span>
                     <span data-im="subjectlist@teachers"></span>
-                    <span class="label">&nbsp;&nbsp;&nbsp;単位数：</span>
-                    <span data-im="subjectlist@credit"></span>
                 </td>
             </tr>
             </tbody>
@@ -311,8 +319,8 @@
                     <h2>凡例：講義の傾向</h2>
                     <table style="border: none;">
                         <tr>
-<!--                            <td style="text-align: right"><img src="../images/R-2.png" class="icon"></td>-->
-<!--                            <td>教室で実施（リモート参加可）</td>-->
+                            <!--                            <td style="text-align: right"><img src="../images/R-2.png" class="icon"></td>-->
+                            <!--                            <td>教室で実施（リモート参加可）</td>-->
                             <td style="text-align: right"><img src="../images/4-7.png" class="icon"></td>
                             <td>基礎的な内容を含む</td>
                             <td style="text-align: right"><img src="../images/4-8.png" class="icon"></td>
