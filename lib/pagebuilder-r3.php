@@ -348,6 +348,28 @@ IM_Entry(
             ),
             "db-class" => "PDO",
         ),
+        // Onetime Lecture
+        array(
+            "name" => "subjectonetime",
+            "view" => "subject",
+            "table" => "dummy",
+            'aggregation-select' => "subject.*, firstdt, lecturedate",
+            'aggregation-from' => "subject
+                LEFT JOIN firstlecture ON firstlecture.subject_id = subject.subject_id
+                LEFT JOIN alldatelecture ON alldatelecture.subject_id = subject.subject_id",
+            "records" => 100,
+            "query" => array(
+                array("field" => "aproval_temporally_account", "operator" => "LIKE", "value" => "_%"),
+                array("field" => "contest", "operator" => "=", "value" => "0"),
+                array("field" => "seminar", "operator" => "=", "value" => "0"),
+                array("field" => "cate_syllabus", "operator" => "=", "value" => 1),
+                array("field" => "firstdt", "operator" => ">=",
+                    "value" => date('Y-m-d H:i:s', strtotime('3 week', time()))),
+            ),
+            "sort" => array(
+                array("field" => "firstdt", "direction" => "asc"),
+            ),
+        ),
     ),
     array(
         'formatter' => array(
