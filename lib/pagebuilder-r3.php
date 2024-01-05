@@ -357,7 +357,7 @@ IM_Entry(
             'aggregation-from' => "subject
                 LEFT JOIN firstlecture ON firstlecture.subject_id = subject.subject_id
                 LEFT JOIN alldatelecture ON alldatelecture.subject_id = subject.subject_id",
-            "records" => 8,
+            "records" => 10,
             "query" => array(
                 array("field" => "aproval_temporally_account", "operator" => "LIKE", "value" => "_%"),
                 array("field" => "contest", "operator" => "=", "value" => "0"),
