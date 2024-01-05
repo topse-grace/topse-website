@@ -369,6 +369,7 @@ IM_Entry(
             "sort" => array(
                 array("field" => "firstdt", "direction" => "asc"),
             ),
+            "db-class" => "PDO",
         ),
     ),
     array(
