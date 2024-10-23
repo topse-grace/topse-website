@@ -53,7 +53,7 @@ IM_Entry(
             "navi-control" => "master-hide",
             "records" => 100,
             "query" => array(
-                array("field" => "executed_year", "operator" => "=", "value" => 2024),
+                array("field" => "executed_year", "operator" => "=", "value" => 2025),
                 array("field" => "cate_syllabus", "operator" => "=", "value" => 1),
 //                array('field' => '__operation__'),
 //                array("field" => "executed_year", "operator" => "=", "value" => 31),
