@@ -306,7 +306,7 @@ p {
 --------------------------------------------------------- */
 .parallax1 {
     background-image: url('../../images/parallax1.jpg');
-    height: 400px;
+    height: 200px;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -315,7 +315,7 @@ p {
 
 .parallax2 {
     background-image: url('../../images/parallax2.jpg');
-    height: 400px;
+    height: 200px;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
