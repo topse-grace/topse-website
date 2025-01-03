@@ -24,7 +24,7 @@ $dbProtocol = 'HTTP';
 
 /* DB_PDO awares below:
  */
-$dbDSN = 'mysql:host=localhost;dbname=topse_office;charset=utf8mb8';
+$dbDSN = 'mysql:host=localhost;dbname=topse_office;charset=utf8mb4';
 //$dbDSN = 'mysql:host=mysql425.db.sakura.ne.jp;dbname=topse_office;charset=utf8';
 //$dbDSN = 'mysql:unix_socket=/tmp/mysql.sock;dbname=test_db;charset=utf8mb4';
 $dbOption = array();
